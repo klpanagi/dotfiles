@@ -100,7 +100,7 @@ URxvt*color3: #c47f2c
 URxvt*color4: #30309b
 URxvt*color5: #7e40a5
 URxvt*color6: #3579a8
-URxvt*color7: #9999aa
+URxvt*color7: #f0f0f0
 URxvt*color8: #303030
 URxvt*color9: #ff0090
 URxvt*color10: #80ff00
@@ -108,6 +108,6 @@ URxvt*color11: #ffba68
 URxvt*color12: #5f5fee
 URxvt*color13: #bb88dd
 URxvt*color14: #4eb4fa
-URxvt*color15: #d0d0d0
+URxvt*color15: #f0f0f0
 ! special
 *.cursorColor: #93a1a1
