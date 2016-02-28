@@ -118,14 +118,15 @@ URxvt*foreground: #d0d0d0
 URxvt*color0: #202020
 URxvt*color8: #303030
 ! Red
-URxvt*color1: #960050
+URxvt*color1: #990000
 URxvt*color9: #ff0090
 ! Green
 URxvt*color2: #66aa11
 URxvt*color10: #80ff00
 ! Yellow
-URxvt*color3: #c47f2c
-URxvt*color11: #ffba68
+URxvt*color3: #ff8c00
+p
+URxvt*color11: #ff8c00
 ! Blue
 URxvt*color4: #30309b
 URxvt*color12: #5f5fee
