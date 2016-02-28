@@ -11,4 +11,4 @@ local urxvtConfFile="${HOME}/.Xdefaults"
 # Tmux
 `ln -s ${filepath}/tmux/tmux.conf "${HOME}/.tmux.conf"`
 # urxvt
-`ln -s ${filepath}/urxvt/Xdefaults.urxvt.molokai "${HOME}/.Xdefaults"`
+`ln -s ${filepath}/urxvt/Xdefaults.urxvt.default "${HOME}/.Xdefaults"`
