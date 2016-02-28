@@ -70,8 +70,6 @@ URxvt.perl.ext-common:      ...,vtwheel,...
 ! --------------------------------------------------------------------------
 URxvt.url-select.launcher:   /usr/bin/chromium-dev
 URxvt.url-select.underline:  true
-URxvt.keysym.C-Up:           perl:font-size:increase
-URxvt.keysym.C-Down:         perl:font-size:decrease
 URxvt.keysym.C-S-Up:         perl:font-size:incglobal
 URxvt.keysym.C-S-Down:       perl:font-size:decglobal
 URxvt.iso14755:              false
@@ -84,6 +82,13 @@ URxvt.clipboard.copycmd:  xclip -i -selection clipboard
 URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+
+! Spacial keys workaround fix - FIXES
+! --------------------------------------------------------------------------
+URxvt.keysym.Home: \033[7~
+URxvt.keysym.End: \033[8~
+URxvt.keysym.KP_Home: \033[7~
+URxvt.keysym.KP_End:  \033[8~
 
 ! Misc
 ! --------------------------------------------------------------------------
