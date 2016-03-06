@@ -55,11 +55,11 @@ URxvt*scrollTtyKeypress:    true
 URxvt*scrollTtyOutput:      false
 URxvt*skipScroll:  true
 URxvt*thickness: 3
- 
+
 ! Transparency
 ! --------------------------------------------------------------------------
 URxvt.transparent:          false
- 
+
 ! Extentions
 ! --------------------------------------------------------------------------
 URxvt.perl-lib:             ~/.urxvt/ext
@@ -68,12 +68,8 @@ URxvt.perl.ext-common:      ...,vtwheel,...
 
 ! URLs
 ! --------------------------------------------------------------------------
-URxvt.url-select.launcher:   /usr/bin/chromium-dev
+URxvt.url-select.launcher:   google-chrome-stable
 URxvt.url-select.underline:  true
-URxvt.keysym.C-Up:           perl:font-size:increase
-URxvt.keysym.C-Down:         perl:font-size:decrease
-URxvt.keysym.C-S-Up:         perl:font-size:incglobal
-URxvt.keysym.C-S-Down:       perl:font-size:decglobal
 URxvt.iso14755:              false
 URxvt.iso14755_52:           false
 
@@ -84,6 +80,24 @@ URxvt.clipboard.copycmd:  xclip -i -selection clipboard
 URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+
+! Keybindings
+! --------------------------------------------------------------------------
+URxvt.keysym.C-equal:           perl:font-size:increase
+URxvt.keysym.C-minus:           perl:font-size:decrease
+URxvt.keysym.C-S-equal:         perl:font-size:incglobal
+URxvt.keysym.C-S-minus:         perl:font-size:decglobal
+
+! Home-End keys can also be configured in inputrc file (~/.inputrc)
+!URxvt.keysym.Home: \033[1~
+!URxvt.keysym.End: \033[7~
+URxvt.keysym.Home: \033[7~
+URxvt.keysym.End: \033[8~
+!URxvt.keysym.KP_Home: \033[1~
+!URxvt.keysym.KP_End:  \033[4~
+URxvt.keysym.KP_Home: \033[7~
+URxvt.keysym.KP_End:  \033[8~
+
 
 ! Misc
 ! --------------------------------------------------------------------------
@@ -99,11 +113,17 @@ URxvt.boldMode:       true
 URxvt.skipBuiltinGlyphs: true
 URxvt.loginShell: true
 URxvt*title: urxvt
-URxvt*termName: xterm-256color
 URxvt*fading: 30
 URxvt*fadeColor: Black
 Urxvt.tripleclickwords: true
 URxvt*pointerBlankDelay: 4
+
+
+! Fixe Term
+
+XTerm*termName: xterm-256color
+URxvt*termName: rxvt-unicode
+
 
 ! Mouse
 ! --------------------------------------------------------------------------
