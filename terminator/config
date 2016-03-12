@@ -77,14 +77,14 @@
     background_image = None
     copy_on_selection = True
     cursor_color = "#00c409"
-    custom_command = tmux -2
+    /*use_custom_command = True*/
+    /*custom_command = tmux -2*/
     font = DejaVu Sans Mono, Awesome 8
     foreground_color = "#ffffff"
-    palette = "#181915:#7a0137:#498702:#c5bb63:#3465a4:#75507b:#4194b0:#d3d7cf:#45473c:#e00265:#6dca04:#e6db74:#1589ff:#af5fff:#5cd1f8:#ffffff"
+    palette = "#202020:#990000:#66aa11:#ffff4c:#30309b:#7e40a5:#3579a8:#f0f0f0:#303030:#ff0090:#80ff00:#ffff4c:#5f5fee:#bb88dd:#4eb4fa:#f0f0f0"
     scroll_on_output = False
     scrollback_infinite = True
     urgent_bell = True
-    use_custom_command = True
     use_system_font = False
     visible_bell = True
   [[molokai]]
