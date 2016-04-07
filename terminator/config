@@ -73,7 +73,7 @@
 [plugins]
 [profiles]
   [[default]]
-    background_color = "#0d0d0d"
+    background_color = "#000000"
     background_image = None
     copy_on_selection = True
     cursor_color = "#00c409"
