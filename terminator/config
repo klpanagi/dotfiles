@@ -58,7 +58,7 @@
 [profiles]
   [[default]]
     palette = "#202020:#990000:#00cd00:#ffff4c:#30309b:#7e40a5:#3579a8:#f0f0f0:#303030:#ff0090:#80ff00:#ffff4c:#5f5fee:#bb88dd:#4eb4fa:#f0f0f0"
-    font = Awesome 8
+    font = Hack 9
     visible_bell = True
     background_image = None
     urgent_bell = True
