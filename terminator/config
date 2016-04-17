@@ -76,9 +76,7 @@
     background_color = "#000000"
     background_image = None
     copy_on_selection = True
-    cursor_color = "#00c409"
-    /*use_custom_command = True*/
-    /*custom_command = tmux -2*/
+    cursor_color = "#008d00"
     font = DejaVu Sans Mono, Awesome 8
     foreground_color = "#ffffff"
     palette = "#202020:#990000:#00cd00:#ffff4c:#30309b:#7e40a5:#3579a8:#f0f0f0:#303030:#ff0090:#80ff00:#ffff4c:#5f5fee:#bb88dd:#4eb4fa:#f0f0f0"
@@ -87,22 +85,3 @@
     urgent_bell = True
     use_system_font = False
     visible_bell = True
-  [[molokai]]
-    background_color = "#121212"
-    background_image = None
-    cursor_color = "#c20257"
-    font = DejaVu Sans Mono 9
-    foreground_color = "#ffffff"
-    palette = "#181915:#7a0137:#498702:#c5bb63:#3465a4:#75507b:#4194b0:#d3d7cf:#45473c:#e00265:#6dca04:#e6db74:#1d71ca:#af5fff:#5cd1f8:#ffffff"
-    scrollback_infinite = True
-    scrollbar_position = hidden
-    show_titlebar = False
-    use_system_font = False
-  [[monokai]]
-    allow_bold = False
-    background_color = "#0d0d0d"
-    background_image = None
-    font = DejaVu Sans Mono 10
-    foreground_color = "#ffffff"
-    palette = "#000000:#f92672:#6cc72c:#fe9720:#5f91ef:#9358fe:#36af90:#8c8c8c:#4c4c4c:#ff80f4:#a7e22e:#ffee99:#5fd9ef:#ae82fe:#66efd5:#c7cece"
-    use_system_font = False

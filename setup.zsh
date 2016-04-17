@@ -20,5 +20,5 @@ local xinitFile="${HOME}/.xinitrc"
 `ln -s ${filepath}/urxvt/Xdefaults.urxvt.default "${urxvtConfFile}"`
 `ln -s ${filepath}/urxvt/inputrc "${keymapConfFile}"`
 # Terminator
-`ln -s ${filepath/terminator/config} ${terminatorConfFile}`
-`ln -s ${filepath/x/xinitrc} ${xinitFile}`
+`ln -s ${filepath}/terminator/config ${terminatorConfFile}`
+`ln -s ${filepath}/x/xinitrc ${xinitFile}`
