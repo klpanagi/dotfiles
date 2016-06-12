@@ -1,0 +1,81 @@
+[global_config]
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  always_split_with_profile = True
+  sticky = True
+  always_on_top = True
+  suppress_multiple_term_dialog = True
+  hide_from_taskbar = True
+  tab_position = bottom
+[keybindings]
+  cycle_prev = None
+  next_tab = None
+  close_window = None
+  group_tab = None
+  move_tab_right = None
+  resize_left = None
+  broadcast_all = None
+  rotate_ccw = None
+  reset_clear = None
+  go_right = None
+  new_tab = None
+  resize_right = None
+  resize_down = None
+  toggle_zoom = None
+  scaled_zoom = None
+  zoom_in = None
+  group_all = None
+  full_screen = None
+  prev_tab = None
+  split_vert = None
+  ungroup_all = None
+  broadcast_off = None
+  ungroup_tab = None
+  insert_number = None
+  insert_padded = None
+  zoom_out = None
+  broadcast_group = None
+  go_prev = None
+  close_term = None
+  new_terminator = None
+  go_next = None
+  go_left = None
+  copy = <Control>c
+  hide_window = None
+  reset = None
+  search = None
+  go_up = None
+  resize_up = None
+  rotate_cw = None
+  split_horiz = None
+  zoom_normal = None
+  go_down = None
+  new_window = None
+  paste = <Control>v
+  edit_window_title = None
+  cycle_next = None
+  move_tab_left = None
+  toggle_scrollbar = None
+[profiles]
+  [[default]]
+    palette = "#202020:#990000:#00cd00:#ffff4c:#30309b:#7e40a5:#3579a8:#f0f0f0:#303030:#ff0090:#80ff00:#ffff4c:#5f5fee:#bb88dd:#4eb4fa:#f0f0f0"
+    font = Hack 9
+    visible_bell = True
+    background_image = None
+    urgent_bell = True
+    use_system_font = False
+    cursor_color = "#008d00"
+    foreground_color = "#ffffff"
+    scroll_on_output = False
+    copy_on_selection = True
+    scrollback_infinite = True
+[layouts]
+  [[default]]
+    [[[terminal1]]]
+      parent = child1
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      order = 0
+      parent = ""
+      type = Window
+[plugins]
