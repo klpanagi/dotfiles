@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Devastator Backlight
+Exec=xset led 3
+Icon=system-run
