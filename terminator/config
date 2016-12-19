@@ -80,3 +80,4 @@
     urgent_bell = True
     use_system_font = False
     visible_bell = True
+    force_no_bell=True
