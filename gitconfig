@@ -1,0 +1,15 @@
+[user]
+  email = klpanagi@gmail.com
+  name = Konstantinos Panayiotou
+
+[log]
+  decorate = full
+
+[alias]
+  tree = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+  lg = !"git lg1"
+
+
+  co = checkout
+  unstage = reset HEAD
+  undo-commit = reset --soft HEAD^
