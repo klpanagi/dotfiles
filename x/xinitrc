@@ -34,3 +34,9 @@ case $1 in
 
   *             ) exec dbus-launch $DEFAULT_SESSION ;;
 esac
+
+# Open Coolermaster keyboard leds
+exec xset led 3
+
+# Load default monitor positioning configuration
+exec autorandr --change default
