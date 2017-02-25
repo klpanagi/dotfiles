@@ -1,10 +1,10 @@
 [global_config]
-  borderless = True
   enabled_plugins = ,
   focus = system
+  homogeneous_tabbar = False
+  scroll_tabbar = True
+  tab_position = bottom
   title_transmit_bg_color = "#be5046"
-  title_use_system_font = False
-  scroll_on_output = False
 [keybindings]
   broadcast_all = None
   broadcast_group = None
@@ -55,22 +55,34 @@
   zoom_in = None
   zoom_normal = None
   zoom_out = None
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
 [plugins]
 [profiles]
   [[default]]
-    scrollback_infinite = True
-    scrollbar_position = hidden
     background_color = "#1a1a1a"
+    backspace_binding = automatic
     cursor_color = "#f8f8f2"
+    delete_binding = automatic
     foreground_color = "#f8f8f2"
     palette = "#272822:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#a1efe4:#f8f8f2:#75715e:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#a1efe4:#f9f8f5"
-  [[Duotone Dark]]
     scrollback_infinite = True
     scrollbar_position = hidden
+  [[Duotone Dark]]
     background_color = "#1f1d27"
     cursor_color = "#ff9839"
     foreground_color = "#b7a1ff"
     palette = "#1f1d27:#d9393e:#2dcd73:#d9b76e:#ffc284:#de8d40:#2488ff:#b7a1ff:#353147:#d9393e:#2dcd73:#d9b76e:#ffc284:#de8d40:#2488ff:#eae5ff"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+  [[clear]]
+    cursor_color = "#aaaaaa"
   [[molokai]]
     background_color = "#121212"
     cursor_color = "#c20257"
@@ -82,46 +94,46 @@
     show_titlebar = False
     use_system_font = False
   [[monokai]]
-    scrollback_infinite = True
-    scrollbar_position = hidden
     background_color = "#1a1a1a"
     cursor_color = "#f8f8f2"
     foreground_color = "#f8f8f2"
     palette = "#272822:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#a1efe4:#f8f8f2:#75715e:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#a1efe4:#f9f8f5"
-  [[monokai-klpanagi]]
     scrollback_infinite = True
     scrollbar_position = hidden
+  [[monokai-klpanagi]]
     copy_on_selection = True
     cursor_color = "#008d00"
     foreground_color = "#ffffff"
     palette = "#0f0f0f:#cd0000:#00cd00:#ffe100:#1933e2:#cd00cd:#00cdcd:#faebd7:#404040:#ff0000:#00ff00:#ffe100:#3062e5:#ff00ff:#00ffff:#ffffff"
-  [[monokai-soda]]
     scrollback_infinite = True
     scrollbar_position = hidden
+  [[monokai-soda]]
     background_color = "#1a1a1a"
     cursor_color = "#f6f7ec"
     foreground_color = "#c4c5b5"
     palette = "#1a1a1a:#f4005f:#98e024:#fa8419:#9d65ff:#f4005f:#58d1eb:#c4c5b5:#625e4c:#f4005f:#98e024:#e0d561:#9d65ff:#f4005f:#58d1eb:#f6f6ef"
-  [[monokai-vivid]]
     scrollback_infinite = True
     scrollbar_position = hidden
+  [[monokai-vivid]]
     background_color = "#121212"
     cursor_color = "#fb0007"
     foreground_color = "#f9f9f9"
     palette = "#121212:#fa2934:#98e123:#fff30a:#0443ff:#f800f8:#01b6ed:#ffffff:#838383:#f6669d:#b1e05f:#fff26d:#0443ff:#f200f6:#51ceff:#ffffff"
-  [[nord]]
     scrollback_infinite = True
     scrollbar_position = hidden
+  [[nord]]
     background_color = "#2e3440"
     cursor_color = "#D8DEE9"
     foreground_color = "#d8dee9"
     palette = "#3b4252:#bf616a:#a3be8c:#ebcb8b:#81a1c1:#b48ead:#88c0d0:#e5e9f0:#4c566a:#bf616a:#a3be8c:#ebcb8b:#81a1c1:#b48ead:#8fbcbb:#eceff4"
-  [[one-dark]]
     scrollback_infinite = True
     scrollbar_position = hidden
+  [[one-dark]]
     background_color = "#272B33"
     copy_on_selection = True
     cursor_color = "#abb2c0"
     font = Droid Sans Mono 9
     foreground_color = "#abb2c0"
     palette = "#272B33:#e06c75:#98c379:#d19a66:#61afef:#c678dd:#56b6c2:#abb2c0:#272B33:#e5c07b:#5c6370:#828997:#abb2bf:#c678dd:#abb2bf:#abb2c0"
+    scrollback_infinite = True
+    scrollbar_position = hidden
