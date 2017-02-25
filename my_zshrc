@@ -1,0 +1,212 @@
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
+
+# Check if zplug is installed
+if [[ ! -d ~/.zplug ]]; then
+    git clone https://github.com/zplug/zplug ~/.zplug
+    source ~/.zplug/init.zsh && zplug update --self
+fi
+source $HOME/.zplug/init.zsh
+
+ZPLUG_PROTOCOL="SSH"
+ZPLUG_USE_CACHE=true
+
+## Bundles {
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
+zplug "plugins/command-not-found", from:oh-my-zsh
+zplug "plugins/z", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/colorize", from:oh-my-zsh
+zplug "plugins/pip", from:oh-my-zsh
+zplug "plugins/cp", from:oh-my-zsh
+zplug "plugins/colored-man-pages", from:oh-my-zsh
+zplug "plugins/ssh-agent", from:oh-my-zsh
+zplug "plugins/tmux", from:oh-my-zsh
+
+zplug "zsh-users/zsh-completions",              defer:0
+zplug "zsh-users/zsh-autosuggestions",          defer:2, on:"zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting",      defer:3, on:"zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-syntax-highlighting"
+zplug "supercrabtree/k"
+zplug "Tarrasch/zsh-autoenv"
+# }
+
+# Theme ----------{
+setopt prompt_subst
+zplug "denysdovhan/spaceship-zsh-theme", \
+    use:"spaceship.zsh-theme", \
+    as:theme
+# ----------}
+
+if ! zplug check --verbose; then
+    printf "Install zsh plugin? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load
+
+zmodload zsh/terminfo
+## zsh-history-substring-search {
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+## zsh-autosuggestions --{
+bindkey '^ ' autosuggest-execute
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=39"
+## --}
+
+# ZSH History config ----------{
+setopt append_history
+setopt hist_expire_dups_first
+setopt hist_fcntl_lock
+setopt hist_ignore_all_dups
+setopt hist_lex_words
+setopt hist_reduce_blanks
+setopt hist_save_no_dups
+setopt share_history
+# ----------}
+
+export BROWSER="firefox"
+
+## Compiler
+export CC=/usr/bin/gcc
+export CXX=/usr/bin/g++
+
+# Locale
+export LANG=en_US.UTF-8
+
+export TERMINAL="terminator"
+
+# If not tmux session
+export TERM=xterm-256color
+#[ -n "$TMUX" ] && export TERM=screen-256color
+
+
+CASE_SENSITIVE="true"
+# HYPHEN_INSENSITIVE="true"
+DISABLE_AUTO_UPDATE="true"
+# export UPDATE_ZSH_DAYS=13
+# DISABLE_LS_COLORS="true"
+DISABLE_AUTO_TITLE="true"
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+HIST_STAMPS="mm/dd/yyyy"
+
+if [ -d "$HOME/.local/bin" ]; then
+  PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/lib" ]; then
+  LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
+fi
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='gvim'
+else
+    export EDITOR='vim'
+fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+
+# Aliases ----------{
+if [ -f "${HOME}/.zsh_aliases" ]; then
+    source ~/.zsh_aliases
+fi
+# ----------}
+
+# ROS {
+if [ -d "/opt/ros/indigo" ]; then
+    source /opt/ros/indigo/setup.zsh --extend
+fi
+# }
+
+# RAPP-Platform {
+if [ -d "${HOME}/rapp_platform" ]; then
+    source ${HOME}/rapp_platform/rapp_platform_setup.zsh
+fi
+# }
+
+# export PYTHONPATH=$PYTHONPATH:${HOME}/Desktop/Diploma-Thesis/ai-playground/deep-learning/lib
+
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# For a full list of active aliases, run `alias`.
+if [[ $(uname -r) == *ARCH* ]]; then
+    alias install="sudo pacman -S"
+    alias upgrade="sudo pacman -Syu"
+    alias remove="sudo pacman -R"
+    alias autoremove="sudo pacman -Rs"
+    alias purge="sudo pacman -Rsc"
+    alias paclog="less /var/log/pacman.log"
+    alias psearch="sudo pacman -Ss"
+    alias porphans="sudo pacman -Qdt"
+    alias paclean="sudo pacman -Sc"
+    else
+    alias install="sudo apt-get install"
+    alias update="sudo apt-get update"
+    alias upgrade="sudo apt-get upgrade"
+    alias remove="sudo apt-get remove"
+fi
+
+# Directory and file listing with tree ---{
+alias tree1="tree -L 1"
+alias tree2="tree -L 2"
+alias tree3="tree -L 3"
+# ---}
+
+# Useful info ---{
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias tcp="netstat -antp"
+alias udp="netstat -anup"
+alias findps="ps aux | grep"
+# ---}
+
+# Tmux
+ZSH_TMUX_AUTOSTART=true
+alias tmux="tmux -2"
+
+alias c="clear"
+# Vi-mode settings ----{
+bindkey -v
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey '^R' history-incremental-search-backward
+#bindkey -M vicmd 'k' history-substring-search-up
+#bindkey -M vicmd 'j' history-substring-search-down]]]]
+# ----}
+
+
+# Terminal colors
+BASE16_SHELL="$HOME/.config/base16-shell/base16-tomorrow.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+ctrl-z-restore () {
+    if [[ $#BUFFER -eq 0 ]]; then
+        BUFFER="fg"
+        zle accept-line
+    else
+        zle push-input
+        zle clear-screen
+    fi
+}
+
+zle -N ctrl-z-restore
+bindkey '^Z' ctrl-z-restore
+
+## FZF plugin ----------{
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+    export FZF_COMPLETION_TRIGGER=',,' # Trigger Sequence (,,<TAB>)
+FZH_TMUX_HEIGHT=40 # Control fzf pane height
+# ----------}
+
+export WORKON_HOME=~/.virtualenvs
+[ -f /usr/bin/virtualenvwrapper.sh ] && source /usr/bin/virtualenvwrapper.sh
+[ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
