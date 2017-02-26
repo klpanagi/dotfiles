@@ -1,3 +1,5 @@
+ #!/usr/bin/zsh
+
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 
 # Check if zplug is installed
@@ -21,7 +23,7 @@ zplug "plugins/pip", from:oh-my-zsh
 zplug "plugins/cp", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/ssh-agent", from:oh-my-zsh
-zplug "plugins/tmux", from:oh-my-zsh
+#zplug "plugins/tmux", from:oh-my-zsh
 
 zplug "zsh-users/zsh-completions",              defer:0
 zplug "zsh-users/zsh-autosuggestions",          defer:2, on:"zsh-users/zsh-completions"
@@ -48,12 +50,12 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
-zmodload zsh/terminfo
+#zmodload zsh/terminfo
 ## zsh-history-substring-search {
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+#bindkey "$terminfo[kcuu1]" history-substring-search-up
+#bindkey "$terminfo[kcud1]" history-substring-search-down
+#bindkey '^[[A' history-substring-search-up
+#bindkey '^[[B' history-substring-search-down
 
 ## zsh-autosuggestions --{
 bindkey '^ ' autosuggest-execute
@@ -116,26 +118,11 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-
 # Aliases ----------{
 if [ -f "${HOME}/.zsh_aliases" ]; then
     source ~/.zsh_aliases
 fi
 # ----------}
-
-# ROS {
-if [ -d "/opt/ros/indigo" ]; then
-    source /opt/ros/indigo/setup.zsh --extend
-fi
-# }
-
-# RAPP-Platform {
-if [ -d "${HOME}/rapp_platform" ]; then
-    source ${HOME}/rapp_platform/rapp_platform_setup.zsh
-fi
-# }
-
-# export PYTHONPATH=$PYTHONPATH:${HOME}/Desktop/Diploma-Thesis/ai-playground/deep-learning/lib
 
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
@@ -171,10 +158,11 @@ alias findps="ps aux | grep"
 # ---}
 
 # Tmux
-ZSH_TMUX_AUTOSTART=true
+#ZSH_TMUX_AUTOSTART=true
 alias tmux="tmux -2"
 
 alias c="clear"
+
 # Vi-mode settings ----{
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
@@ -210,3 +198,19 @@ FZH_TMUX_HEIGHT=40 # Control fzf pane height
 export WORKON_HOME=~/.virtualenvs
 [ -f /usr/bin/virtualenvwrapper.sh ] && source /usr/bin/virtualenvwrapper.sh
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
+
+# ROS {
+if [ -d "/opt/ros/indigo" ]; then
+    source /opt/ros/indigo/setup.zsh --extend
+fi
+# }
+
+# RAPP-Platform {
+if [ -d "${HOME}/rapp_platform" ]; then
+    source ${HOME}/rapp_platform/rapp_platform_setup.zsh
+fi
+# }
+
+# export PYTHONPATH=$PYTHONPATH:${HOME}/Desktop/Diploma-Thesis/ai-playground/deep-learning/lib
+
+
