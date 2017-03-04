@@ -23,6 +23,7 @@ zplug "plugins/pip", from:oh-my-zsh
 zplug "plugins/cp", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/ssh-agent", from:oh-my-zsh
+zplug "plugins/vi-mode", from:oh-my-zsh
 #zplug "plugins/tmux", from:oh-my-zsh
 
 zplug "zsh-users/zsh-completions",              defer:0
@@ -51,11 +52,13 @@ fi
 zplug load
 
 #zmodload zsh/terminfo
-## zsh-history-substring-search {
+# zsh-history-substring-search {
 #bindkey "$terminfo[kcuu1]" history-substring-search-up
 #bindkey "$terminfo[kcud1]" history-substring-search-down
-#bindkey '^[[A' history-substring-search-up
-#bindkey '^[[B' history-substring-search-down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 ## zsh-autosuggestions --{
 bindkey '^ ' autosuggest-execute
@@ -74,6 +77,7 @@ setopt share_history
 # ----------}
 
 export BROWSER="firefox"
+export TERMINAL="terminator"
 
 ## Compiler
 export CC=/usr/bin/gcc
@@ -82,12 +86,9 @@ export CXX=/usr/bin/g++
 # Locale
 export LANG=en_US.UTF-8
 
-export TERMINAL="terminator"
-
 # If not tmux session
 export TERM=xterm-256color
 #[ -n "$TMUX" ] && export TERM=screen-256color
-
 
 CASE_SENSITIVE="true"
 # HYPHEN_INSENSITIVE="true"
