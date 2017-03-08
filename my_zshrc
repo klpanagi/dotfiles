@@ -77,7 +77,7 @@ setopt share_history
 # ----------}
 
 export BROWSER="firefox"
-export TERMINAL="terminator"
+export TERMINAL="termite"
 
 ## Compiler
 export CC=/usr/bin/gcc
@@ -86,14 +86,15 @@ export CXX=/usr/bin/g++
 # Locale
 export LANG=en_US.UTF-8
 
-# If not tmux session
+if [[ $TERM == xterm-termite ]]; then
+  . /etc/profile.d/vte.sh
+  __vte_osc7
+fi
 export TERM=xterm-256color
-#[ -n "$TMUX" ] && export TERM=screen-256color
 
 CASE_SENSITIVE="true"
 # HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
-# export UPDATE_ZSH_DAYS=13
 # DISABLE_LS_COLORS="true"
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -111,7 +112,7 @@ fi
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='gvim'
+    export EDITOR='vim'
 else
     export EDITOR='vim'
 fi
@@ -205,13 +206,3 @@ if [ -d "/opt/ros/indigo" ]; then
     source /opt/ros/indigo/setup.zsh --extend
 fi
 # }
-
-# RAPP-Platform {
-if [ -d "${HOME}/rapp_platform" ]; then
-    source ${HOME}/rapp_platform/rapp_platform_setup.zsh
-fi
-# }
-
-# export PYTHONPATH=$PYTHONPATH:${HOME}/Desktop/Diploma-Thesis/ai-playground/deep-learning/lib
-
-
