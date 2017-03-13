@@ -179,7 +179,7 @@ bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
 bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down]]]]
+bindkey -M vicmd 'j' history-substring-search-down
 # -------------------------}
 
 
@@ -187,6 +187,7 @@ bindkey -M vicmd 'j' history-substring-search-down]]]]
 BASE16_SHELL="$HOME/.config/base16-shell/base16-tomorrow.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
+# Smart "bring process to foreground" by pressing ^Z (Ctrl+Z) --{
 ctrl-z-restore () {
     if [[ $#BUFFER -eq 0 ]]; then
         BUFFER="fg"
@@ -199,6 +200,7 @@ ctrl-z-restore () {
 
 zle -N ctrl-z-restore
 bindkey '^Z' ctrl-z-restore
+# --------------------------------------------------------}
 
 # Python virtual environment tools ------{
 export WORKON_HOME=~/.virtualenvs
