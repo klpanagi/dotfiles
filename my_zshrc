@@ -8,11 +8,12 @@ if [[ ! -d ~/.zplug ]]; then
     source ~/.zplug/init.zsh && zplug update --self
 fi
 source $HOME/.zplug/init.zsh
-
 ZPLUG_PROTOCOL="SSH"
 ZPLUG_USE_CACHE=true
 
-## Bundles {
+setopt prompt_subst
+
+## Bundles/Plugins -------------------------------{
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
 zplug "plugins/command-not-found", from:oh-my-zsh
@@ -26,20 +27,21 @@ zplug "plugins/ssh-agent", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 #zplug "plugins/tmux", from:oh-my-zsh
 
-zplug "zsh-users/zsh-completions",              defer:0
-zplug "zsh-users/zsh-autosuggestions",          defer:2, on:"zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting",      defer:3, on:"zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-syntax-highlighting"
-zplug "supercrabtree/k"
-zplug "Tarrasch/zsh-autoenv"
-# }
+zplug "zsh-users/zsh-completions", \
+  defer:0
+zplug "zsh-users/zsh-autosuggestions", \
+  defer:2, on:"zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting", \
+  defer:3, on:"zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-history-substring-search", \
+  defer:3, on:"zsh-users/zsh-syntax-highlighting"
+# ------------------------------------------------}
 
-# Theme ----------{
-setopt prompt_subst
+# Theme ------------------------------------{
 zplug "denysdovhan/spaceship-zsh-theme", \
     use:"spaceship.zsh-theme", \
     as:theme
-# ----------}
+# -----------------------------------------}
 
 if ! zplug check --verbose; then
     printf "Install zsh plugin? [y/N]: "
@@ -51,14 +53,19 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
-#zmodload zsh/terminfo
-# zsh-history-substring-search {
-#bindkey "$terminfo[kcuu1]" history-substring-search-up
-#bindkey "$terminfo[kcud1]" history-substring-search-down
+# Load ZSH Modules ----------------{
+zmodload zsh/terminfo
+zmodload zsh/zpty
+# -----------------------}
+
+# zsh-history-substring-search ------------{
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+bindkey '^K' history-substring-search-up
+bindkey '^J' history-substring-search-down
+# ---------------------------}
 
 ## zsh-autosuggestions --{
 bindkey '^ ' autosuggest-execute
@@ -102,6 +109,7 @@ COMPLETION_WAITING_DOTS="true"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="mm/dd/yyyy"
 
+# Load user's local lib and bin directories, if exist --------{
 if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
 fi
@@ -109,42 +117,43 @@ fi
 if [ -d "$HOME/.local/lib" ]; then
   LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
 fi
+# ----------------------------------------------------}
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-else
-    export EDITOR='vim'
-fi
+# Select terminal editor between vim and neovim
+command -v nvim >/dev/null 2>&1 && { export EDITOR="nvim"; alias vim="nvim" } ||
+  export EDITOR="vim"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Aliases ----------{
+export SSH_KEY_PATH="~/.ssh/id_rsa.pub"
+
+# Aliases --------------------------------------{
 if [ -f "${HOME}/.zsh_aliases" ]; then
     source ~/.zsh_aliases
 fi
-# ----------}
 
-export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # For a full list of active aliases, run `alias`.
-if [[ $(uname -r) == *ARCH* ]]; then
-    alias install="sudo pacman -S"
-    alias upgrade="sudo pacman -Syu"
-    alias remove="sudo pacman -R"
-    alias autoremove="sudo pacman -Rs"
-    alias purge="sudo pacman -Rsc"
+if [[ $(uname -r) == *ARCH*]]  || [[$(uname -r) == *MANJARO* ]]; then
+    alias paci="sudo pacman -S"
+    alias pacupgrade="sudo pacman -Syu"
+    alias pacremove="sudo pacman -R"
+    alias pacautoremove="sudo pacman -Rs"
+    alias pacpurge="sudo pacman -Rsc"
     alias paclog="less /var/log/pacman.log"
     alias psearch="sudo pacman -Ss"
     alias porphans="sudo pacman -Qdt"
     alias paclean="sudo pacman -Sc"
-    else
+    alias pacsync="sudo pacman -Syy"
+else
     alias install="sudo apt-get install"
     alias update="sudo apt-get update"
     alias upgrade="sudo apt-get upgrade"
     alias remove="sudo apt-get remove"
 fi
+
+alias c="clear"
 
 # Directory and file listing with tree ---{
 alias tree1="tree -L 1"
@@ -163,15 +172,15 @@ alias findps="ps aux | grep"
 #ZSH_TMUX_AUTOSTART=true
 alias tmux="tmux -2"
 
-alias c="clear"
+# --------------------------------------------}
 
-# Vi-mode settings ----{
+# Vi-mode settings -------------------{
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
-#bindkey -M vicmd 'k' history-substring-search-up
-#bindkey -M vicmd 'j' history-substring-search-down]]]]
-# ----}
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down]]]]
+# -------------------------}
 
 
 # Terminal colors
@@ -191,18 +200,8 @@ ctrl-z-restore () {
 zle -N ctrl-z-restore
 bindkey '^Z' ctrl-z-restore
 
-## FZF plugin ----------{
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-    export FZF_COMPLETION_TRIGGER=',,' # Trigger Sequence (,,<TAB>)
-FZH_TMUX_HEIGHT=40 # Control fzf pane height
-# ----------}
-
+# Python virtual environment tools ------{
 export WORKON_HOME=~/.virtualenvs
 [ -f /usr/bin/virtualenvwrapper.sh ] && source /usr/bin/virtualenvwrapper.sh
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
-
-# ROS {
-if [ -d "/opt/ros/indigo" ]; then
-    source /opt/ros/indigo/setup.zsh --extend
-fi
-# }
+# ------------------------------------}
