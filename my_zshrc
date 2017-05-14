@@ -63,6 +63,8 @@ zmodload zsh/zpty
 # zsh-history-substring-search ------------{
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+bindkey '^[[1;5A' history-substring-search-up
+bindkey '^[[1;5B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 bindkey '^K' history-substring-search-up
@@ -185,6 +187,9 @@ bindkey -M viins 'jk' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+bindkey '^W' backward-kill-word
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
 # -------------------------}
 
 
