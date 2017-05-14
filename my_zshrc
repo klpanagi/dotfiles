@@ -73,10 +73,9 @@ bindkey '^J' history-substring-search-down
 
 ## zsh-autosuggestions --{
 bindkey '^ ' autosuggest-execute
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=39"
+bindkey '^O' autosuggest-execute
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=38"
 ## --}
-
-# Load base16-shell theme
 
 # ZSH History config ----------{
 setopt append_history
