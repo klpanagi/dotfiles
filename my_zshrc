@@ -26,10 +26,11 @@ zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/ssh-agent", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/virtualenvwrapper", from:oh-my-zsh
+
+zplug "chriskempson/base16-shell", defer:0
 #zplug "plugins/tmux", from:oh-my-zsh
 
-zplug "zsh-users/zsh-completions", \
-  defer:0
+zplug "zsh-users/zsh-completions", defer:0
 zplug "zsh-users/zsh-autosuggestions", \
   defer:2, on:"zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", \
@@ -72,6 +73,8 @@ bindkey '^J' history-substring-search-down
 bindkey '^ ' autosuggest-execute
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=39"
 ## --}
+
+# Load base16-shell theme
 
 # ZSH History config ----------{
 setopt append_history
@@ -121,7 +124,8 @@ fi
 # ----------------------------------------------------}
 
 # Select terminal editor between vim and neovim
-command -v nvim >/dev/null 2>&1 && { export EDITOR="nvim"; alias vim="nvim" } ||
+command -v nvim >/dev/null 2>&1 &&
+  { export EDITOR="nvim"; alias vim="nvim" } ||
   export EDITOR="vim"
 
 # Compilation flags
@@ -185,8 +189,9 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 
 # Terminal colors
-BASE16_SHELL="$HOME/.config/base16-shell/base16-tomorrow.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# BASE16_SHELL="$HOME/.config/base16-shell/base16-tomorrow.dark.sh"
+# BASE16_SHELL="$HOME/.config/base16-shell/base16-default-dark.sh"
+# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # Smart "bring process to foreground" by pressing ^Z (Ctrl+Z) --{
 ctrl-z-restore () {
@@ -205,6 +210,8 @@ bindkey '^Z' ctrl-z-restore
 
 # Python virtual environment tools ------{
 export WORKON_HOME=~/.virtualenvs
-[ -f /usr/bin/virtualenvwrapper.sh ] && source /usr/bin/virtualenvwrapper.sh
-[ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
+[ -f /usr/bin/virtualenvwrapper.sh ] &&
+  source /usr/bin/virtualenvwrapper.sh
+[ -f /usr/local/bin/virtualenvwrapper.sh ] &&
+  source /usr/local/bin/virtualenvwrapper.sh
 # ------------------------------------}
