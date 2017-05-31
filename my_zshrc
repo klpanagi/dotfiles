@@ -7,11 +7,15 @@ if [[ ! -d ~/.zplug ]]; then
     git clone https://github.com/zplug/zplug ~/.zplug
     source ~/.zplug/init.zsh && zplug update --self
 fi
+# Initialize zplug
 source $HOME/.zplug/init.zsh
+# Protocol to use to access the remote repository
 ZPLUG_PROTOCOL="SSH"
+# Cache plugins
 ZPLUG_USE_CACHE=true
 
 setopt prompt_subst
+setopt correct
 
 ## Bundles/Plugins -------------------------------{
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
@@ -28,15 +32,21 @@ zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/virtualenvwrapper", from:oh-my-zsh
 
 zplug "chriskempson/base16-shell", defer:0
-#zplug "plugins/tmux", from:oh-my-zsh
+zplug "plugins/tmux", from:oh-my-zsh
 
 zplug "zsh-users/zsh-completions", defer:0
+
 zplug "zsh-users/zsh-autosuggestions", \
-  defer:2, on:"zsh-users/zsh-completions"
+  defer:3, on:"zsh-users/zsh-completions"
+
 zplug "zsh-users/zsh-syntax-highlighting", \
   defer:3, on:"zsh-users/zsh-autosuggestions"
+
 zplug "zsh-users/zsh-history-substring-search", \
   defer:3, on:"zsh-users/zsh-syntax-highlighting"
+
+# zplug "zdharma/fast-syntax-highlighting", \
+#   defer:3, on:"zsh-users/zsh-syntax-highlighting"
 # ------------------------------------------------}
 
 # Theme ------------------------------------{
@@ -134,6 +144,21 @@ command -v nvim >/dev/null 2>&1 &&
 
 export SSH_KEY_PATH="~/.ssh/id_rsa.pub"
 
+# Auto execute ls command when cding to a directory
+auto-ls () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    zle && echo ""
+    ls
+    zle && zle redisplay
+  else
+    zle .$WIDGET
+  fi
+}
+
+zle -N auto-ls
+zle -N accept-line auto-ls
+add-zsh-hook chpwd auto-ls
+
 # Aliases --------------------------------------{
 if [ -f "${HOME}/.zsh_aliases" ]; then
     source ~/.zsh_aliases
@@ -218,4 +243,12 @@ export WORKON_HOME=~/.virtualenvs
   source /usr/bin/virtualenvwrapper.sh
 [ -f /usr/local/bin/virtualenvwrapper.sh ] &&
   source /usr/local/bin/virtualenvwrapper.sh
+
+if [ -n "$VIRTUAL_ENV" ]; then
+  . "$VIRTUAL_ENV/bin/activate"
+fi
 # ------------------------------------}
+
+if [ -f "~/.zshrc_platform" ]; then
+  source ~/.zshrc_platform
+fi
