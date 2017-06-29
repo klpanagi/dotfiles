@@ -186,6 +186,8 @@ fi
 
 alias c="clear"
 
+alias loadros="source /opt/ros/indigo/setup.zsh"
+
 # Directory and file listing with tree ---{
 alias tree1="tree -L 1"
 alias tree2="tree -L 2"
