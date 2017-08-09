@@ -82,8 +82,8 @@ bindkey '^J' history-substring-search-down
 # ---------------------------}
 
 ## zsh-autosuggestions --{
-bindkey '^ ' autosuggest-execute
-bindkey '^O' autosuggest-execute
+bindkey '^ ' autosuggest-accept
+bindkey '^o' autosuggest-execute
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=38"
 ## --}
 
