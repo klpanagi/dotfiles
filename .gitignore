@@ -1,2 +1,4 @@
 *.sw*
 .*.sw*
+
+weechat/sec.conf
