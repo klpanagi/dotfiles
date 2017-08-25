@@ -254,3 +254,6 @@ fi
 if [ -f "~/.zshrc_platform" ]; then
   source ~/.zshrc_platform
 fi
+
+RUN='neofetch --cpu_temp C --gtk_shorthand off --gtk2 off --gtk3 off --disk_display infobar --disk_show /'
+eval "$RUN"
