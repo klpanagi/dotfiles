@@ -165,46 +165,6 @@ if [ -f "${HOME}/.zsh_aliases" ]; then
 fi
 
 
-# For a full list of active aliases, run `alias`.
-if [[ $(uname -r) == *ARCH*]]  || [[$(uname -r) == *MANJARO* ]]; then
-    alias paci="sudo pacman -S"
-    alias pacupgrade="sudo pacman -Syu"
-    alias pacremove="sudo pacman -R"
-    alias pacautoremove="sudo pacman -Rs"
-    alias pacpurge="sudo pacman -Rsc"
-    alias paclog="less /var/log/pacman.log"
-    alias psearch="sudo pacman -Ss"
-    alias porphans="sudo pacman -Qdt"
-    alias paclean="sudo pacman -Sc"
-    alias pacsync="sudo pacman -Syy"
-else
-    alias install="sudo apt-get install"
-    alias update="sudo apt-get update"
-    alias upgrade="sudo apt-get upgrade"
-    alias remove="sudo apt-get remove"
-fi
-
-alias c="clear"
-
-alias loadros="source /opt/ros/indigo/setup.zsh"
-
-# Directory and file listing with tree ---{
-alias tree1="tree -L 1"
-alias tree2="tree -L 2"
-alias tree3="tree -L 3"
-# ---}
-
-# Useful info ---{
-alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias tcp="netstat -antp"
-alias udp="netstat -anup"
-alias findps="ps aux | grep"
-# ---}
-
-# Tmux
-#ZSH_TMUX_AUTOSTART=true
-alias tmux="tmux -2"
-
 # --------------------------------------------}
 
 # Vi-mode settings -------------------{
@@ -255,5 +215,9 @@ if [ -f "~/.zshrc_platform" ]; then
   source ~/.zshrc_platform
 fi
 
-RUN='neofetch --cpu_temp C --gtk_shorthand off --gtk2 off --gtk3 off --disk_display infobar --disk_show /'
-eval "$RUN"
+# RUN='neofetch --cpu_temp C --gtk_shorthand off --gtk2 off --gtk3 off'
+# eval "$RUN"
+
+export PYTHONPATH=$PYTHONPATH:${HOME}/development/r4a-framework/third-party/pynaoqi-python2.7-2.1.4.13-linux64/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HOME}/development/r4a-framework/third-party/pynaoqi-python2.7-2.1.4.13-linux64/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HOME}/development/r4a-framework/third-party/icu/source/lib
