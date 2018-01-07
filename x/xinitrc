@@ -31,12 +31,14 @@ case $1 in
   lxqt          ) exec dbus-launch lxqt-session ;;
   mate          ) exec dbus-launch mate-session ;;
   xfce          ) exec dbus-launch xfce4-session ;;
-
   *             ) exec dbus-launch $DEFAULT_SESSION ;;
 esac
 
 # Open Coolermaster keyboard leds
 exec xset led 3
+
+# Disable bell
+exec xset b off
 
 # Load default monitor positioning configuration
 exec autorandr --change default
