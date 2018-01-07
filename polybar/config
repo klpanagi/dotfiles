@@ -24,9 +24,8 @@ padding-right = 1
 module-margin-right = 1
 module-margin-left = 1
 
-modules-right = wlan eth volume temperature cpu filesystem date battery
-modules-left = i3
-/* modules-center = i3 */
+modules-right = cpu memory temperature filesystem wlan eth battery date volume backlight keyboard
+modules-left = i3 title
 
 background = #373737
 foreground = ${colors.white}
@@ -45,8 +44,8 @@ tray-transparent = false
 
 font-0 = terminus:size=9;0
 font-1 = FontAwesome:size=11;0
-font-2 = TakaoGothic:weight=bold:size=12;0
-font-3 = FontAwesome:size=10;0
+font-2 = Roboto:weight=bold:size=9;0
+font-3 = FontAwesome:size=12;0
 
 [module/xwindow]
 type = internal/xwindow
@@ -62,7 +61,7 @@ mount-0 = /
 ;mount-1 = /home
 ;mount-2 = /invalid/mountpoint
 
-label-mounted= %free%
+label-mounted= / %free%
 label-mounted-underline = ${colors.white}
 label-mounted-padding = 1
 
@@ -120,6 +119,8 @@ label-urgent-foreground = #000000
 label-urgent-background = #bd2c40
 label-urgent-padding = 2
 
+; ------------------ MPD Music Module -----------------------------------------{
+
 [module/mpd]
 type = internal/mpd
 
@@ -151,9 +152,11 @@ icon-repeat = R
 
 toggle-on-foreground = #e60053
 toggle-off-foreground = #66
+; -----------------------------------------------------------------------------}
 
-
+; -------------------------- CPU Module ----------------------{
 [module/cpu]
+type = internal/cpu
 format-label = internal/cpu
 
 format = <label>
@@ -168,21 +171,34 @@ ramp-coreload-6 = ▇
 ramp-coreload-7 = █
 ramp-coreload-underline = ${colors.white}
 
-type = internal/cpu
 interval = 2
-label = %{F${colors.white}  %percentage% %{F-}
+label = %{F${colors.white}  CPU %percentage% %{F-}%
 label-underline = ${colors.white}
 padding= 2
+; ----------------------------------------------------------}
 
-
+; ---------------------- MEMORY Module ------------------------{
 [module/memory]
 type = internal/memory
 interval = 2
 
-label = %{F${colors.white}  %percentage_used% %{F-}
+format = <label>
+label =  RAM %gb_used%/%gb_total%
 label-underline = ${colors.white}
 label-foreground = ${colors.white}
 
+bar-used-indicator =
+bar-used-width = 50
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #444444
+; -------------------------------------------------------------}
+
+; --------------------- Network Modules -----------------------{
 [module/wlan]
 type = internal/network
 interface = wlp3s0
@@ -191,14 +207,28 @@ interval = 3.0
 format-connected-padding = 1
 format-disconnected-padding = 1
 
-format-connected = <label-connected>
-format-connected-underline = ${colors.white}
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = ${colors.green}
 format-disconnected-underline = ${colors.red}
+format-packetloss = <animation-packetloss> <label-connected>
 
-label-connected = %essid%
+label-connected = %essid% %downspeed:9%
 label-disconnected = 
 #label-disconnected-foreground = ${colors.gray}
 
+animation-packetloss-0 = ⚠
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 📶
+animation-packetloss-1-foreground = #000000
+; Framerate in milliseconds
+animation-packetloss-framerate = 500
+
+ramp-signal-0 = ▁
+ramp-signal-1 = ▂
+ramp-signal-2 = ▃
+ramp-signal-3 = ▅
+ramp-signal-4 = ▆
+ramp-signal-5 = █
 
 [module/eth]
 type = internal/network
@@ -208,13 +238,22 @@ interval = 3.0
 format-connected-padding = 1
 format-disconnected-padding = 1
 
-format-connected-underline = ${colors.white}
-#format-disconnected-underline = ${colors.red}
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = ${colors.green}
+format-disconnected-underline = ${colors.red}
+format-packetloss = <animation-packetloss> <label-connected>
 
-label-connected = 
-#label-disconnected = 
-#label-disconnected-foreground = ${colors.gray}
+label-connected =  %downspeed:9%
 
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
+; ---------------------------------------------------}
+
+; ------------------- DATE Module -------------------{
 [module/date]
 type = internal/date
 date-alt =   %b/%d/%A  %H:%M
@@ -224,8 +263,9 @@ format-underline = ${colors.white}
 ;format-background = ${colors.black}
 format-foreground = ${colors.white}
 format-padding = 1
+; ---------------------------------------------------}
 
-
+; ------------------- VOLUME Module ---------------------------{
 [module/volume]
 type = internal/volume
 
@@ -253,8 +293,9 @@ bar-volume-fill-font = 4
 bar-volume-empty = 
 bar-volume-empty-font = 4
 bar-volume-empty-foreground = ${colors.gray}
+; -------------------------------------------------------------}
 
-
+; ----------------------- BATTERY Module -------------------------{
 [module/battery]
 type = internal/battery
 battery = BAT1
@@ -286,8 +327,9 @@ animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-foreground = ${colors.green}
 animation-charging-framerate = 500
+; ---------------------------------------------------------------}
 
-
+; ------------------- TEMPERATURE Module ------------------------{
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
@@ -308,6 +350,7 @@ ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = #55
+; --------------------------------------------------------------}
 
 [module/updates]
 type = custom/script
@@ -320,3 +363,73 @@ exec = ~/.config/polybar/spotify.sh  %artist% - %title%
 tail = true
 interval = 2
 
+; -----------------------BACKLIGHT Module---------------------{
+[module/backlight]
+type = internal/xbacklight
+enable-scroll = true
+
+output = eDP1
+
+; Available tags:
+;   <label> (default)
+;   <ramp>
+;   <bar>
+format = <ramp> <label>
+label = %percentage%%
+
+; Only applies if <ramp> is used
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+; Only applies if <bar> is used
+bar-width = 10
+bar-indicator = |
+bar-fill = ─
+bar-empty = ─
+; -----------------------------------------------------}
+
+; ---------------- KEYBOARD LAYOUT Module --------------------------{
+[module/keyboard]
+type = internal/xkeyboard
+
+; Available tags:
+;   <label-layout> (default)
+;   <label-indicator> (default)
+format = <label-layout> <label-indicator>
+format-spacing = 0
+
+; Available tokens:
+;   %layout%
+;   %name%
+;   %number%
+; Default: %layout%
+label-layout = %layout%
+label-layout-padding = 2
+label-layout-background = ${colors.yellow}
+label-layout-foreground = #000000
+
+label-indicator = %name%
+label-indicator-padding = 2
+label-indicator-background = #8139e8
+label-layout-font = 3
+; -------------------------------------------------------------------}
+
+; --------------- XWINDOW Module ------------------------------------{
+[module/title]
+type = internal/xwindow
+
+; Available tags:
+;   <label> (default)
+format-background = ${colors.blue}
+format-foreground = ${colors.black}
+format-padding = 2
+
+; Available tokens:
+;   %title%
+; Default: %title%
+label =  %title%
+label-maxlen = 50
+label-font = 3
