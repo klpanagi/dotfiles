@@ -15,6 +15,9 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 DEFAULT_SESSION='i3 --shmlog-size 0'
 
+# Load default monitor positioning configuration
+exec autorandr --load default
+
 case $1 in
   awesome       ) exec dbus-launch awesome ;;
   bspwm         ) exec dbus-launch bspwm-session ;;
@@ -39,6 +42,3 @@ exec xset led 3
 
 # Disable bell
 exec xset b off
-
-# Load default monitor positioning configuration
-exec autorandr --change default
