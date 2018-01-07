@@ -6,6 +6,9 @@ red = #c795ae
 blue = #95aec7
 yellow = #c7ae95
 green = #aec795
+cyan = #8abeb7
+purple = #b294bb
+orange = #de935f
 
 [bar/Main]
 bottom = false
@@ -46,12 +49,6 @@ font-0 = terminus:size=9;0
 font-1 = FontAwesome:size=11;0
 font-2 = Roboto:weight=bold:size=9;0
 font-3 = FontAwesome:size=12;0
-
-[module/xwindow]
-type = internal/xwindow
-label = %title%
-label-maxlen = 30
-
 
 [module/filesystem]
 type = internal/fs
@@ -115,8 +112,9 @@ label-visible-underline = #555555
 label-visible-padding = 1
 
 label-urgent = %index%:%icon%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
+label-urgent-foreground = #ffffff
+label-urgent-background = ${colors.gray}
+label-urgent-underline = ${colors.purple}
 label-urgent-padding = 2
 
 ; ------------------ MPD Music Module -----------------------------------------{
