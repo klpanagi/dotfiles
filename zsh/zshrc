@@ -17,6 +17,8 @@ ZPLUG_USE_CACHE=true
 setopt prompt_subst
 setopt correct
 
+command -v gawk >/dev/null 2>&1 || {echo "[WARNING]: gawk does not exist, please install!"}
+
 ## Bundles/Plugins -------------------------------{
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
@@ -27,7 +29,7 @@ zplug "plugins/colorize", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
 zplug "plugins/cp", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
-zplug "plugins/ssh-agent", from:oh-my-zsh
+#zplug "plugins/ssh-agent", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/virtualenvwrapper", from:oh-my-zsh
 
