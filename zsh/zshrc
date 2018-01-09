@@ -46,9 +46,6 @@ zplug "zsh-users/zsh-syntax-highlighting", \
 
 zplug "zsh-users/zsh-history-substring-search", \
   defer:3, on:"zsh-users/zsh-syntax-highlighting"
-
-# zplug "zdharma/fast-syntax-highlighting", \
-#   defer:3, on:"zsh-users/zsh-syntax-highlighting"
 # ------------------------------------------------}
 
 # Theme ------------------------------------{
@@ -149,7 +146,8 @@ if [[ $TERM == xterm-termite ]]; then
   . /etc/profile.d/vte.sh
   __vte_osc7
 fi
-export TERM=xterm-256color
+# export TERM=xterm-256color
+export TERM=screen-256color
 
 CASE_SENSITIVE="true"
 # HYPHEN_INSENSITIVE="true"
