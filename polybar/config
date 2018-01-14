@@ -77,7 +77,7 @@ ws-icon-1 = 2;
 ws-icon-2 = 3;
 ws-icon-3 = 4;
 ws-icon-4 = 5;
-ws-icon-default = ♟
+ws-icon-default = 
 
 label-mode = %mode%
 label-mode-padding = 2
@@ -170,7 +170,7 @@ ramp-coreload-7 = █
 ramp-coreload-underline = ${colors.white}
 
 interval = 2
-label = %{F${colors.white}  CPU %percentage% %{F-}%
+label = %{F${colors.white}  CPU %percentage% %{F-}%
 label-underline = ${colors.white}
 padding= 2
 ; ----------------------------------------------------------}
@@ -210,7 +210,7 @@ format-connected-underline = ${colors.green}
 format-disconnected-underline = ${colors.red}
 format-packetloss = <animation-packetloss> <label-connected>
 
-label-connected = %essid% %downspeed:9%
+label-connected = %essid% %downspeed:9% 
 label-disconnected = 
 #label-disconnected-foreground = ${colors.gray}
 
