@@ -249,11 +249,14 @@ bindsym $mod+Ctrl+9 move container to workspace $ws9
 # Open applications on specific workspaces
 assign [class="Thunderbird"] $ws4
 assign [class="Pale moon"] $ws2
+assign [class="Chromium"] $ws2
+assign [class="Firefox"] $ws2
 assign [class="Pcmanfm"] $ws3
 assign [class="Skype"] $ws5
+assign [class="Caprine"] $ws5
+assign [class="Mattermost"] $ws5
 #assign [class="(?i)virtualbox"] $ws4
-#assign [class="Terminator"] $ws1
-assign [class="Chromium"] $ws2
+assign [class="Terminator"] $ws1
 assign [class="Termite"] $ws1
 
 # Open specific applications in floating mode
