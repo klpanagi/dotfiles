@@ -1,20 +1,35 @@
+; vim: filetype=dosini
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
 [colors]
 white = #d7d7d7
 gray = #585858
 black = #090909
-red = #c795ae
+red = #cc6666
 blue = #95aec7
+blue2 = #6699cc
 yellow = #c7ae95
+yellow2 = #ffcc66
 green = #aec795
 cyan = #8abeb7
-purple = #b294bb
+purple = #cc99cc
 orange = #de935f
+background = #1d1f21
+foreground = #c5c8c6
+selection = #373b41
 
 [bar/Main]
 bottom = false
 wm-restack = i3
 width = 100%
-height = 24
+height = 26
 override-redirect = false
 
 monitor = ${env:MONITOR:DP1}
@@ -27,13 +42,15 @@ padding-right = 1
 module-margin-right = 1
 module-margin-left = 1
 
-modules-right = cpu memory temperature filesystem wlan eth battery date volume backlight keyboard
+modules-center = cpu memory temperature filesystem wlan eth github pkgupdates 
+modules-right = keyboard battery backlight date
 modules-left = i3 title
 
-background = #373737
+; background = #373737
+background = ${colors.background}
 foreground = ${colors.white}
 
-underline-size = 2
+underline-size = 3
 underline-color = ${colors.red}
 
 tray-detached = false
@@ -49,6 +66,7 @@ font-0 = terminus:size=9;0
 font-1 = FontAwesome:size=11;0
 font-2 = Roboto:weight=bold:size=9;0
 font-3 = FontAwesome:size=12;0
+font-4 = Roboto:weight=bold:size=8;0
 
 [module/filesystem]
 type = internal/fs
@@ -59,7 +77,7 @@ mount-0 = /
 ;mount-2 = /invalid/mountpoint
 
 label-mounted= / %free%
-label-mounted-underline = ${colors.white}
+label-mounted-underline = ${colors.blue2}
 label-mounted-padding = 1
 
 label-unmounted = "Unmounted disk!"
@@ -81,30 +99,17 @@ ws-icon-default = 
 
 label-mode = %mode%
 label-mode-padding = 2
-label-mode-background = #e60053
-
-;label-focused = 
-;label-focused-background = #383838
-;label-focused-padding = 1
-
-;label-unfocused = 
-;label-unfocused-padding = 1
-
-;label-urgent = 
-;label-urgent-background = ${colors.red}
-;label-urgent-padding = 1
-
-;label-visible = 
-;label-visible-foreground = ${colors.white}
-;label-visible-padding = 1
+label-mode-background = ${colors.red}
+label-mode-foreground = ${colors.foreground}
 
 label-focused = %index%:%icon%
-label-focused-foreground = #ffffff
-label-focused-background = #3f3f3f
+label-focused-foreground = ${colors.white}
+label-focused-background = ${colors.selection}
 label-focused-underline = #fba922
 label-focused-padding = 1
 
 label-unfocused = %index%:%icon%
+label-unfocused-foreground = ${colors.foreground}
 label-unfocused-padding = 1
 
 label-visible = %index%:%icon%
@@ -171,7 +176,7 @@ ramp-coreload-underline = ${colors.white}
 
 interval = 2
 label = %{F${colors.white}  CPU %percentage% %{F-}%
-label-underline = ${colors.white}
+label-underline = ${colors.blue2}
 padding= 2
 ; ----------------------------------------------------------}
 
@@ -182,7 +187,7 @@ interval = 2
 
 format = <label>
 label =  RAM %gb_used%/%gb_total%
-label-underline = ${colors.white}
+label-underline = ${colors.blue2}
 label-foreground = ${colors.white}
 
 bar-used-indicator =
@@ -254,8 +259,9 @@ ramp-signal-5 = 😈
 ; ------------------- DATE Module -------------------{
 [module/date]
 type = internal/date
-date-alt =   %b/%d/%A  %H:%M
-date =   %H:%M
+; date =   %b/%d/%A  %H:%M
+date =   %b/%d  %H:%M
+date-alt =   %H:%M
 interval = 5
 format-underline = ${colors.white}
 ;format-background = ${colors.black}
@@ -275,7 +281,7 @@ label-volume-foreground = ${root.foreground}
 label-muted =  sound muted
 label-muted-foreground = ${colors.gray}
 
-bar-volume-width = 10
+bar-volume-width = 6
 bar-volume-foreground-0 = ${colors.green}
 bar-volume-foreground-1 = ${colors.green}
 bar-volume-foreground-2 = ${colors.green}
@@ -334,7 +340,7 @@ thermal-zone = 0
 warn-temperature = 65
 
 format = <label>
-format-underline = ${colors.white}
+format-underline = ${colors.blue2}
 format-warn = <label-warn>
 format-warn-underline = ${colors.red}
 
@@ -408,11 +414,13 @@ label-layout = %layout%
 label-layout-padding = 2
 label-layout-background = ${colors.yellow}
 label-layout-foreground = #000000
+label-layout-font = 3
 
 label-indicator = %name%
 label-indicator-padding = 2
-label-indicator-background = #8139e8
-label-layout-font = 3
+label-indicator-background = ${colors.purple}
+label-indicator-foreground = #000000
+label-indicator-font = 5
 ; -------------------------------------------------------------------}
 
 ; --------------- XWINDOW Module ------------------------------------{
@@ -429,5 +437,53 @@ format-padding = 2
 ;   %title%
 ; Default: %title%
 label =  %title%
-label-maxlen = 50
+label-maxlen = 30
 label-font = 3
+
+
+; ------------------------- VPN Module -------------------------{
+[module/vpn]
+type = custom/script
+exec = echo vpn
+exec-if = pgrep -x openvpn
+interval = 5
+format-underline = #268bd2
+format-prefix = "🖧 "
+format-prefix-foreground = ${colors.foreground}
+; -------------------------------------------------------------}
+
+
+; ------------------------- Updates Module ---------------------}
+[module/pkgupdates]
+type = custom/script
+
+exec = checkupdates | wc -l
+tail = true
+interval = 90
+
+format = <label>
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-underline = ${colors.yellow2}
+format-padding = 2
+format-spacing = 2
+format-prefix = " "
+format-font = 3
+
+; -----------------------GITHUB Module ----------------------{
+[module/github]
+type = internal/github
+
+; Accessing an access token stored in an environment variable
+token = ${file:~/.github-access.token}
+
+; Whether empty notifications should be displayed or not
+empty-notifications = false
+
+; Number of seconds in between requests
+interval = 10
+
+format = <label>
+format-prefix = " "
+label = %notifications%
+format-underline = ${colors.yellow2}
