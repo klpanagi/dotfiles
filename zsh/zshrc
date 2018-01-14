@@ -253,6 +253,4 @@ fi
 # RUN='neofetch --cpu_temp C --gtk_shorthand off --gtk2 off --gtk3 off'
 # eval "$RUN"
 
-export PYTHONPATH=$PYTHONPATH:${HOME}/development/r4a-framework/third-party/pynaoqi-python2.7-2.1.4.13-linux64/
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HOME}/development/r4a-framework/third-party/pynaoqi-python2.7-2.1.4.13-linux64/
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HOME}/development/r4a-framework/third-party/icu/source/lib
+export GITHUB_ACCESS_TOKEN_FILE="${HOME}/.github-access.token"
