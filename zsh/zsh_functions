@@ -1,0 +1,30 @@
+vmls () {
+    VBoxManage list vms
+}
+
+vmkill () {
+    vboxmanage controlvm ${1} poweroff hard
+}
+
+vmstart () {
+    _vmname=${1}
+    echo ${_vmname}
+    if [ -z "${_vmname}" ]; then
+        echo "Must be called with VM name as argument" 1>&2
+        return
+    fi
+    VBoxManage startvm ${_vmname} --type headless
+}
+
+vmnat () {
+    if [[ ${1} == "--help" ]]; then
+        echo "Usage: \n\tvmnat {vm-name} {nat-rulename} {guest-port} {host-port}"
+        return
+    fi
+    _vmname=${1}
+    _rulename=${2}
+    _protocol="tcp"
+    _guestport=${3}
+    _hostport=${4}
+    VBoxManage modifyvm ${_vmname} --natpf1 "${_rulename},tcp,,${_hostport},,${_guestport}"
+}
