@@ -24,12 +24,15 @@ orange = #de935f
 background = #1d1f21
 foreground = #c5c8c6
 selection = #373b41
+linecolor = #fba922
+bordercolor = #333
+accent = #e60053
 
 [bar/Main]
 bottom = false
 wm-restack = i3
 width = 100%
-height = 26
+height = 28
 override-redirect = false
 
 monitor = ${env:MONITOR:DP1}
@@ -44,7 +47,7 @@ module-margin-left = 1
 
 modules-center = cpu memory temperature filesystem wlan eth github pkgupdates 
 modules-right = keyboard battery backlight date
-modules-left = i3 title
+modules-left = powermenu i3 title
 
 ; background = #373737
 background = ${colors.background}
@@ -241,19 +244,19 @@ interval = 3.0
 format-connected-padding = 1
 format-disconnected-padding = 1
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = <label-connected>
 format-connected-underline = ${colors.green}
 format-disconnected-underline = ${colors.red}
 format-packetloss = <animation-packetloss> <label-connected>
 
-label-connected =  %downspeed:9%
+label-connected = %downspeed:9%
 
-ramp-signal-0 = 😱
-ramp-signal-1 = 😠
-ramp-signal-2 = 😒
-ramp-signal-3 = 😊
-ramp-signal-4 = 😃
-ramp-signal-5 = 😈
+; ramp-signal-0 = 😱
+; ramp-signal-1 = 😠
+; ramp-signal-2 = 😒
+; ramp-signal-3 = 😊
+; ramp-signal-4 = 😃
+; ramp-signal-5 = 😈
 ; ---------------------------------------------------}
 
 ; ------------------- DATE Module -------------------{
@@ -261,7 +264,7 @@ ramp-signal-5 = 😈
 type = internal/date
 ; date =   %b/%d/%A  %H:%M
 date =   %b/%d  %H:%M
-date-alt =   %H:%M
+; date-alt =   %H:%M
 interval = 5
 format-underline = ${colors.white}
 ;format-background = ${colors.black}
@@ -339,7 +342,7 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 65
 
-format = <label>
+format = <ramp> <label>
 format-underline = ${colors.blue2}
 format-warn = <label-warn>
 format-warn-underline = ${colors.red}
@@ -353,7 +356,7 @@ label-warn =  %temperature%
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = #55
+ramp-foreground = ${colors.yellow}
 ; --------------------------------------------------------------}
 
 [module/updates]
@@ -487,3 +490,39 @@ format = <label>
 format-prefix = " "
 label = %notifications%
 format-underline = ${colors.yellow2}
+
+; -----------------------Power Menu----------------------{
+[module/powermenu]
+type = custom/menu
+
+label-open = 
+label-close = 
+label-separator = /
+label-separator-margin = 1
+
+menu-0-0 = Logout
+menu-0-0-foreground = ${colors.accent}
+menu-0-0-exec = i3exit
+menu-0-1 = Reboot
+menu-0-1-foreground = ${colors.accent}
+menu-0-1-exec = menu-open-1
+menu-0-2 = Poweroff
+menu-0-2-foreground = ${colors.accent}
+menu-0-2-exec = menu-open-2
+menu-0-3 = Lock
+menu-0-3-foreground = ${colors.accent}
+menu-0-3-exec = blurlock
+
+menu-1-0 = Cancel
+menu-1-0-foreground = ${colors.accent}
+menu-1-0-exec = menu-open-0
+menu-1-1 = Reboot
+menu-1-1-foreground = ${colors.accent}
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = Poweroff
+menu-2-0-foreground = ${colors.accent}
+menu-2-0-exec = sudo poweroff
+menu-2-1 = Cancel
+menu-2-1-foreground = ${colors.accent}
+menu-2-1-exec = menu-open-0
