@@ -5,3 +5,5 @@ My i3 wm customization
 
 - conky
 - feh
+- autorandr: Autoloading display monitor configuration.
+- srandrd: Dynamic monitor detection using autorandr backend
