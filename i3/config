@@ -84,7 +84,7 @@ workspace $ws9 output primary
 ## Screen Resolution and Layout
 #exec --no-startup-id ~/.i3/scripts/monitors.sh
 # Dynamic monitor detection
-exec --no-startup-id srandrd autorandr --load default
+exec --no-startup-id autorandr --load default
 # Disable Annoying Bell
 exec --no-startup-id xset b off
 
