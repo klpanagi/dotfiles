@@ -123,6 +123,13 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
+#increase sound volume
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5%
+#decrease sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -5%
+# mute sound
+bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle
+
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec firefox
