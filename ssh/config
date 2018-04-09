@@ -1,0 +1,4 @@
+Host lab-pc
+  HostName 155.207.33.185
+  Port 5775
+  User klpanagi

@@ -1,0 +1,3 @@
+SSH_AUTH_SOCK=/tmp/ssh-LdWNLGtcDsk9/agent.1512; export SSH_AUTH_SOCK;
+SSH_AGENT_PID=1514; export SSH_AGENT_PID;
+#echo Agent pid 1514;
