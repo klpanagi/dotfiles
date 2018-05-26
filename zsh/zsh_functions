@@ -28,3 +28,10 @@ vmnat () {
     _hostport=${4}
     VBoxManage modifyvm ${_vmname} --natpf1 "${_rulename},tcp,,${_hostport},,${_guestport}"
 }
+
+md5check () {
+  _file=${1}
+  _md5sum=${2}
+  _cmd="echo \"${_md5sum} ${_file}\" | md5sum -c -"
+  eval $_cmd
+}
