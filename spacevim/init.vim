@@ -5,11 +5,11 @@ call SpaceVim#layers#load('incsearch')
 call SpaceVim#layers#load('tags')
 call SpaceVim#layers#load('ui')
 call SpaceVim#layers#load('lang#c')
-call SpaceVim#layers#load('lang#elixir')
 " call SpaceVim#layers#load('lang#go')
 " call SpaceVim#layers#load('lang#haskell')
 " call SpaceVim#layers#load('lang#java')
 call SpaceVim#layers#load('lang#javascript')
+call SpaceVim#layers#load('lang#html')
 " call SpaceVim#layers#load('lang#lua')
 " call SpaceVim#layers#load('lang#perl')
 " call SpaceVim#layers#load('lang#php')
@@ -20,6 +20,7 @@ call SpaceVim#layers#load('lang#tmux')
 call SpaceVim#layers#load('lang#vim')
 call SpaceVim#layers#load('lang#xml')
 call SpaceVim#layers#load('lang#markdown')
+call SpaceVim#layers#load('lang#elixir')
 call SpaceVim#layers#load('shell')
 call SpaceVim#layers#load('tmux')
 call SpaceVim#layers#load('tools#screensaver')
@@ -50,7 +51,7 @@ let g:spacevim_custom_plugins = [
         \ ['elzr/vim-json'],
         \ ]
 
-let g:spacevim_default_indent = 4
+let g:spacevim_default_indent = 2
 let g:spacevim_max_column     = 80
 
 let g:spacevim_colorscheme = 'onedark'
@@ -64,4 +65,7 @@ let g:spacevim_windows_leader = 's'
 let g:spacevim_unite_leader = 'f'
 
 " set the guifont
-let g:spacevim_guifont = 'Inconsolata\ for\ Powerline'
+let g:spacevim_guifont = 'Hack\ for\ Powerline'
+
+" True Colors
+" let g:spacevim_enable_guicolors = 1
