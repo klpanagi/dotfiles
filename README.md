@@ -1,6 +1,6 @@
 # dotfiles
-My personal DotFiles
 
+Because the shell feels like home! :metal:
 
 ## Some usefull cli tools to consider installing
 
