@@ -7,3 +7,11 @@ E.g.
 ```bash
 sudo usermod -a -G audio klpanagi
 ```
+
+# ncmpcpp (ncurses-based client) configuration
+
+Copy the ncmpcpp.config file into `~/.ncmpcpp/config`
+
+```bash
+cp ncmpcpp.config ~/.ncmpcpp/config
+```
