@@ -17,3 +17,5 @@ To disable the nautilus desktop window, use:
 ```bash
 gsettings set org.gnome.desktop.background show-desktop-icons false
 ```
+
+Source: https://unix.stackexchange.com/questions/153483/launching-nautilus-file-browser-launches-gnome-desktop-how-to-suppress-it
