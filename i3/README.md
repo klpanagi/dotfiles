@@ -15,5 +15,5 @@ When using i3 within a GNOME session, starting nautilus (the file manager), naut
 To disable the nautilus desktop window, use:
 
 ```bash
-gsettings set org.nemo.desktop show-desktop-icons false
+gsettings set org.gnome.desktop.background show-desktop-icons false
 ```
