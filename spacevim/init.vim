@@ -69,3 +69,6 @@ let g:spacevim_guifont = 'Hack\ for\ Powerline'
 
 " True Colors
 " let g:spacevim_enable_guicolors = 1
+
+" Write all buffers before navigating from Vim to tmux pane
+let g:tmux_navigator_save_on_switch = 2
