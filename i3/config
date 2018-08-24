@@ -267,6 +267,7 @@ assign [class="Mattermost"] $ws5
 #assign [class="(?i)virtualbox"] $ws4
 assign [class="Terminator"] $ws1
 assign [class="Termite"] $ws1
+assign [class="FoxitReader"] $ws7
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
