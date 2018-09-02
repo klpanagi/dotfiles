@@ -26,6 +26,13 @@ call SpaceVim#layers#load('tmux')
 call SpaceVim#layers#load('tools#screensaver')
 call SpaceVim#layers#load('tools#docker')
 call SpaceVim#layers#load('colorscheme')
+
+let g:spacevim_custom_plugins = [
+        \ ['elzr/vim-json'],
+        \ ['tmhedberg/SimpylFold'],
+        \ ['chriskempson/base16-vim'],
+        \ ]
+
 let g:spacevim_enable_vimfiler_welcome = 1
 let g:spacevim_enable_debug = 1
 let g:deoplete#auto_complete_delay = 150
@@ -47,14 +54,10 @@ endif
 let g:clang2_placeholder_next = ''
 let g:clang2_placeholder_preov = ''
 
-let g:spacevim_custom_plugins = [
-        \ ['elzr/vim-json'],
-        \ ]
-
 let g:spacevim_default_indent = 2
 let g:spacevim_max_column     = 80
 
-let g:spacevim_colorscheme = 'onedark'
+let g:spacevim_colorscheme = 'base16-material-darker'
 let g:spacevim_colorscheme_bg = 'dark'
 
 let g:leader = ','
@@ -65,10 +68,10 @@ let g:spacevim_windows_leader = 's'
 let g:spacevim_unite_leader = 'f'
 
 " set the guifont
-let g:spacevim_guifont = 'Hack\ for\ Powerline'
+let g:spacevim_guifont = 'Roboto\ Mono\ for\ Powerline 11'
 
 " True Colors
-" let g:spacevim_enable_guicolors = 1
+let g:spacevim_enable_guicolors = 1
 
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
