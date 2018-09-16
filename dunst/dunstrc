@@ -1,5 +1,5 @@
 [global]
-    font = Cantarell 10
+    font = Droid Sans 10
     
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -31,7 +31,7 @@
     
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
-    alignment = left
+    alignment = center
     
     # The frequency with wich text that is longer than the notification
     # window allows bounces back and forth.
@@ -116,7 +116,7 @@
     # Draw a line of "separator_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
-    separator_height = 1
+    separator_height = 2
     
     # Padding between text and separator.
     # padding = 8
@@ -179,20 +179,19 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#2B2C2B"
-    foreground = "#888888"
-    timeout = 10
+    background = "#181818"
+    foreground = "#E3C7AF"
+    timeout = 5
 
 [urgency_normal]
-    background = "#2B2C2B"
-    foreground = "#F9FAF9"
-    timeout = 10
+    background = "#181818"
+    foreground = "#E3C7AF"
+    timeout = 20
 
 [urgency_critical]
-    background = "#D62929"
-    foreground = "#F9FAF9"
+    background = "#181818"
+    foreground = "#E3C7AF"
     timeout = 0
-
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
