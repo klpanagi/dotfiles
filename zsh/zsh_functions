@@ -52,8 +52,8 @@ ydl () {
     _cmd=${1}
     _url=${2}
     if [[ ${_cmd} == "single" ]]; then
-        youtube-dl -x --audio-quality 0 --audio-format best -o '%(title)s.%(ext)s' ${_url}
+        youtube-dl --extract-audio --audio-quality 0 --audio-format vorbis -o '%(title)s.%(ext)s' ${_url}
     elif [[ ${_cmd} == "playlist" ]]; then
-        youtube-dl -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s' ${_url} -i
+        youtube-dl --extract-audio --audio-quality 0 --audio-format vorbis -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s' ${_url} -i
     fi
 }
