@@ -68,10 +68,10 @@ let g:spacevim_windows_leader = 's'
 let g:spacevim_unite_leader = 'f'
 
 " set the guifont
-let g:spacevim_guifont = 'Roboto\ Mono\ for\ Powerline 11'
+let g:spacevim_guifont = 'DejaVu\ Sans\ Mono\ for\ Powerline'
 
 " True Colors
-let g:spacevim_enable_guicolors = 1
+" let g:spacevim_enable_guicolors = 1
 
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
