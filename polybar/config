@@ -76,15 +76,16 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-; mount-1 = /data
+mount-1 = /data
 ;mount-2 = /invalid/mountpoint
 
-label-mounted= / %free%
+label-mounted= [%mountpoint%]: %used%/%total%
 label-mounted-underline = ${colors.blue2}
 label-mounted-padding = 1
 
 label-unmounted = "Unmounted disk!"
 label-unmounted-foreground = ${colors.black}
+; fixed-values = true
 
 [module/i3]
 type = internal/i3
@@ -133,7 +134,7 @@ label-urgent-padding = 2
 type = internal/mpd
 
 host = 127.0.0.1
-port = 4200
+port = 6600
 
 interval = 2
 
@@ -417,13 +418,15 @@ format-spacing = 0
 ; Default: %layout%
 label-layout = %layout%
 label-layout-padding = 2
-label-layout-background = ${colors.yellow}
+; label-layout-background = ${colors.yellow}
+label-layout-background = #bc99ed
 label-layout-foreground = #000000
 label-layout-font = 3
 
 label-indicator = %name%
 label-indicator-padding = 2
-label-indicator-background = ${colors.purple}
+; label-indicator-background = ${colors.purple}
+label-indicator-background = #8139e8
 label-indicator-foreground = #000000
 label-indicator-font = 5
 ; -------------------------------------------------------------------}
@@ -442,7 +445,7 @@ format-padding = 2
 ;   %title%
 ; Default: %title%
 label =  %title%
-label-maxlen = 30
+label-maxlen = 25
 label-font = 3
 
 
