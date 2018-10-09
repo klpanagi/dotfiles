@@ -29,7 +29,7 @@ zplug "plugins/colorize", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
 zplug "plugins/cp", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
-#zplug "plugins/ssh-agent", from:oh-my-zsh
+zplug "plugins/ssh-agent", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/virtualenvwrapper", from:oh-my-zsh
 
@@ -199,8 +199,10 @@ if [ -f "${HOME}/.zsh_aliases" ]; then
     source ~/.zsh_aliases
 fi
 
-
-# --------------------------------------------}
+# Functions --------------------------------------{
+if [ -f "${HOME}/.zsh_functions" ]; then
+    source ~/.zsh_functions
+fi
 
 # Vi-mode settings -------------------{
 bindkey -v

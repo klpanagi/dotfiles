@@ -1,0 +1,87 @@
+conky.config = {
+    alignment = 'middle_right',
+    background = true,
+    border_width = 2,
+    cpu_avg_samples = 2,
+	double_buffer = true,
+	default_color = 'lightcyan',
+    default_outline_color = 'cyan',
+    default_shade_color = 'cyan',
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    use_xft = true,
+    font = 'Ubuntu:size=12',
+    gap_x = 5,
+    gap_y = 60,
+    minimum_height = 5,
+	minimum_width = 300,
+    maximum_width = 300,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_stderr = false,
+    extra_newline = false,
+    
+    own_window_class = 'Conky',
+    own_window_type = 'override',
+    own_window_transparent = true,
+    stippled_borders = 0,
+    update_interval = 3.0,
+    uppercase = false,
+    use_spacer = 'none',
+    show_graph_scale = false,
+    show_graph_range = false
+    
+}
+
+conky.text = [[
+
+${goto 35}${if_running audacious}${font}${color}    
+${goto 35}${color #939D9A}${font Ubuntu:size=13}Now ${exec audtool --playback-status}  
+${goto 35}${color #FFFFFF}"${exec audtool --current-song}"   
+${goto 35}${color #939D9A}Artist  
+${goto 35}${color #FFFFFF}${exec audtool --current-song-tuple-data artist}   
+${goto 35}${color #939D9A}Album  
+${goto 35}${color #FFFFFF}${exec audtool --current-song-tuple-data album}   
+${goto 35}${color #939D9A}Track no.  
+${goto 35}${color #FFFFFF}${exec audtool --current-song-tuple-data track-number}   
+${goto 35}${color #939D9A}Elapsed  
+${goto 35}${color #FFFFFF}${exec audtool --current-song-output-length} | ${exec audtool --current-song-length}  
+${goto 35}${color #939D9A}Bitrate
+${goto 35}${color #FFFFFF}${exec audtool --current-song-bitrate-kbps} kbps   
+${endif}
+${color orange}${font Ubuntu:size=13}Desktop ${desktop}
+${color #FFFFFF}${font Arial Black:size=30}${time %H:%M}${font}${color}
+${color lightblue}${time %d %B %Y}${color}
+
+${color orange}OS:${color} ${color}Arch Linux${color}
+${color orange}Kernel:${color}  ${color}${kernel}${color}
+${color orange}Uptime: ${color}${uptime}
+${hr}
+${color orange}CPU:${color} ${freq_g} GHz
+${color orange}0:${color} ${cpu cpu0}% ${cpubar cpu0}
+${hr}
+CPU1: ${cpu cpu1}%   $alignr ${cpubar cpu1 8,60}
+CPU2: ${cpu cpu2}%   $alignr ${cpubar cpu2 8,60}
+CPU3: ${cpu cpu3}%   $alignr ${cpubar cpu3 8,60}
+CPU4: ${cpu cpu4}%   $alignr ${cpubar cpu4 8,60}
+${hr}
+${color orange}Processes:${color} ${processes} \
+${color orange}Running:${color}  ${running_processes}
+${hr}
+${color orange}RAM:  ${color}${mem} / ${memmax}
+${memperc}% ${membar 4}
+${hr}
+${color orange}ROOT:  ${color}${fs_used /} / ${fs_size /} ${fs_bar 6 /}
+${color orange}HOME:  ${color}${fs_used /home} / ${fs_size /home} ${fs_bar 6 /home}
+${color orange}ARHIV:  ${color}${fs_used /run/media/archimboldo/ARHIV} / ${fs_size /run/media/archimboldo/ARHIV} ${fs_bar 6 /run/media/archimboldo/ARHIV}
+${hr}
+${color orange}NETWORK:
+${color light cyan}Up:   ${upspeed enp2s0}
+${color light cyan}Down: ${downspeed enp2s0}
+${hr}
+${color orange}UPDATES:
+${color light cyan}${execpi 600 checkupdates | wc -l}
+]]
