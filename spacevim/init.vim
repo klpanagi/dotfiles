@@ -31,6 +31,7 @@ let g:spacevim_custom_plugins = [
         \ ['elzr/vim-json'],
         \ ['tmhedberg/SimpylFold'],
         \ ['chriskempson/base16-vim'],
+        \ ['igordejanovic/textx.vim'],
         \ ]
 
 let g:spacevim_enable_vimfiler_welcome = 1
@@ -75,3 +76,5 @@ let g:spacevim_guifont = 'DejaVu\ Sans\ Mono\ for\ Powerline'
 
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
+
+cmap w!! w !sudo tee >/dev/null %
