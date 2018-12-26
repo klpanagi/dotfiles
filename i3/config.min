@@ -373,7 +373,8 @@ bar {
 
 	bindsym button4 nop
 	bindsym button5 nop
-#   font xft:URWGothic-Book 11
+  font xft:TerminessTTF Nerd Font 12
+
 	strip_workspace_numbers no
 
     colors {
