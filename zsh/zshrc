@@ -1,6 +1,7 @@
  #!/usr/bin/zsh
 
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
+export PATH=$PATH:${HOME}/.local/bin
 
 # Check if zplug is installed
 if [[ ! -d ~/.zplug ]]; then
