@@ -12,6 +12,7 @@ if [[ $(uname -r) == *ARCH*]]  || [[$(uname -r) == *MANJARO* ]]; then
     alias porphans="sudo pacman -Qdt"
     alias paclean="sudo pacman -Sc"
     alias pacsync="sudo pacman -Syy"
+    alias pacmirrors="pacman-mirrors --fasttrack 5 && sudo pacman -Syyu"
 else
     alias install="sudo apt-get install"
     alias update="sudo apt-get update"
@@ -39,5 +40,3 @@ alias findps="ps aux | grep"
 # Tmux
 #ZSH_TMUX_AUTOSTART=true
 alias tmux="tmux -2"
-
-

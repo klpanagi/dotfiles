@@ -171,8 +171,7 @@ fi
 
 # Select terminal editor between vim and neovim
 command -v nvim >/dev/null 2>&1 &&
-  { export EDITOR="nvim"; alias vim="nvim" } ||
-  export EDITOR="vim"
+  { export EDITOR="nvim"; alias vim="nvim" } || export EDITOR="vim"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
