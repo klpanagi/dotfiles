@@ -44,6 +44,15 @@
     name = 'lang#dockerfile'
 
 [[layers]]
+    name = 'lang#extra'
+
+[[layers]]
+    name = 'lang#xml'
+
+[[layers]]
+    name = 'lang#tmux'
+
+[[layers]]
     name = 'tmux'
     navigator_save_on_switch = 2
 
