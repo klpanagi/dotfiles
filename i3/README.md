@@ -19,3 +19,9 @@ gsettings set org.gnome.desktop.background show-desktop-icons false
 ```
 
 Source: https://unix.stackexchange.com/questions/153483/launching-nautilus-file-browser-launches-gnome-desktop-how-to-suppress-it
+
+## TIPS
+
+### Online Colorscheme Configurator for i3, i3status, dmenu
+
+https://thomashunter.name/i3-configurator/
