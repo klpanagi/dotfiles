@@ -252,7 +252,13 @@ if [ -f "~/.zshrc_platform" ]; then
   source ~/.zshrc_platform
 fi
 
-# RUN='neofetch --cpu_temp C --gtk_shorthand off --gtk2 off --gtk3 off'
-# eval "$RUN"
+RUN='neofetch --cpu_temp C --gtk_shorthand off --gtk2 off --gtk3 off'
+eval "$RUN"
 
 export GITHUB_ACCESS_TOKEN_FILE="${HOME}/.github-access.token"
+
+if [ -f "/opt/ros/kinetic/setup.zsh" ]; then
+  source /opt/ros/kinetic/setup.zsh
+fi
+
+[ "$(docker ps | grep netdata)" ] && echo "[*] - Netdata Real-time performance monitoring agent is runniny. Visit http://$(hostname):19999"
