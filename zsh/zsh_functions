@@ -55,5 +55,7 @@ ydl () {
         youtube-dl --extract-audio --audio-quality 0 --audio-format vorbis -o '%(title)s.%(ext)s' ${_url}
     elif [[ ${_cmd} == "playlist" ]]; then
         youtube-dl --extract-audio --audio-quality 0 --audio-format vorbis -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s' ${_url} -i
+    else
+        echo "Command [${_cmd}] not found!"
     fi
 }
