@@ -1,0 +1,4 @@
+cyber-punk {
+  proxy / localhost:19999
+  tls klpanagi@gmail.com
+}
