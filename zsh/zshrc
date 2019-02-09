@@ -2,6 +2,7 @@
 
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 export PATH=$PATH:${HOME}/.local/bin
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${HOME}/.local/lib:${HOME}/.local/lib
 
 # Check if zplug is installed
 if [[ ! -d ~/.zplug ]]; then
@@ -30,7 +31,7 @@ zplug "plugins/colorize", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
 zplug "plugins/cp", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
-zplug "plugins/ssh-agent", from:oh-my-zsh
+# zplug "plugins/ssh-agent", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/virtualenvwrapper", from:oh-my-zsh
 
@@ -253,7 +254,7 @@ if [ -f "~/.zshrc_platform" ]; then
 fi
 
 RUN='neofetch --cpu_temp C --gtk_shorthand off --gtk2 off --gtk3 off'
-eval "$RUN"
+command -v neofetch >/dev/null 2>&1 && eval "$RUN"
 
 export GITHUB_ACCESS_TOKEN_FILE="${HOME}/.github-access.token"
 
@@ -261,4 +262,10 @@ if [ -f "/opt/ros/kinetic/setup.zsh" ]; then
   source /opt/ros/kinetic/setup.zsh
 fi
 
-[ "$(docker ps | grep netdata)" ] && echo "[*] - Netdata Real-time performance monitoring agent is runniny. Visit http://$(hostname):19999"
+command -v neofetch >/dev/null 2>&1 && [ "$(docker ps | grep netdata)" ] && echo "[*] - Netdata Real-time performance monitoring agent is runniny. Visit http://$(hostname):19999"
+
+# NAOQI
+load_naoqi() {
+  export PYTHONPATH=${PYTHONPATH}:/opt/pynaoqi-python2.7-2.1.4.13-linux64
+  export LD_LIBRARY_PAT=${LD_LIBRARY_PATH}:/opt/pynaoqi-python2.7-2.1.4.13-linux64
+}
