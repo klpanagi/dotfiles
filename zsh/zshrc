@@ -260,12 +260,15 @@ export GITHUB_ACCESS_TOKEN_FILE="${HOME}/.github-access.token"
 
 if [ -f "/opt/ros/kinetic/setup.zsh" ]; then
   source /opt/ros/kinetic/setup.zsh
+  export ROS_HOSTNAME="$(hostname).local"
+  unset ROS_IP
 fi
 
-command -v neofetch >/dev/null 2>&1 && [ "$(docker ps | grep netdata)" ] && echo "[*] - Netdata Real-time performance monitoring agent is runniny. Visit http://$(hostname):19999"
+command -v docker >/dev/null 2>&1 && [ "$(docker ps | grep netdata)" ] && echo "[*] - Netdata Real-time performance monitoring agent is runniny. Visit http://$(hostname):19999"
 
 # NAOQI
 load_naoqi() {
   export PYTHONPATH=${PYTHONPATH}:/opt/pynaoqi-python2.7-2.1.4.13-linux64
   export LD_LIBRARY_PAT=${LD_LIBRARY_PATH}:/opt/pynaoqi-python2.7-2.1.4.13-linux64
 }
+
