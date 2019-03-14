@@ -37,7 +37,6 @@ let g:spacevim_custom_plugins = [
 
 let g:spacevim_enable_vimfiler_welcome = 1
 let g:spacevim_enable_debug = 1
-let g:deoplete#auto_complete_delay = 150
 let g:spacevim_enable_tabline_filetype_icon = 1
 let g:spacevim_enable_statusline_display_mode = 1
 let g:spacevim_enable_os_fileformat_icon = 1
