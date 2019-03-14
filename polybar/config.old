@@ -28,7 +28,7 @@ linecolor = #fba922
 bordercolor = #333
 accent = #e60053
 
-[bar/Main]
+[bar/main]
 bottom = false
 wm-restack = i3
 width = 100%
