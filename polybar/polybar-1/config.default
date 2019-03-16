@@ -55,9 +55,9 @@ font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = bspwm i3
-modules-center = mpd
-modules-right = filesystem xbacklight pulseaudio memory cpu wlan eth battery temperature date powermenu
+modules-left = powermenu i3
+modules-center = xwindow mpd
+modules-right = filesystem xbacklight pulseaudio memory cpu wlan eth battery temperature date
 
 tray-position = right
 tray-padding = 2
@@ -71,8 +71,8 @@ tray-padding = 2
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -216,7 +216,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
-label = %percentage_used%%
+label = %percentage_used%% - %gb_used%/%gb_total%
 
 [module/wlan]
 type = internal/network
@@ -386,7 +386,7 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
+label-open = 'AA'
 label-open-foreground = ${colors.secondary}
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
