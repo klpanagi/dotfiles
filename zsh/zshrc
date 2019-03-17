@@ -191,19 +191,24 @@ command -v nvim >/dev/null 2>&1 &&
 export SSH_KEY_PATH="~/.ssh/id_rsa.pub"
 
 # Auto execute ls command when cding to a directory
-# auto-ls () {
-  # if [[ $#BUFFER -eq 0 ]]; then
-    # zle && echo ""
-    # ls
-    # zle && zle redisplay
-  # else
-    # zle .$WIDGET
-  # fi
-# }
-#
+auto-ls () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    zle && echo ""
+    ls
+    zle && zle redisplay
+  else
+    zle .$WIDGET
+  fi
+}
+
 # zle -N auto-ls
 # zle -N accept-line auto-ls
 # add-zsh-hook chpwd auto-ls
+
+# Colorls aliases
+## https://github.com/athityakumar/colorls
+command -v colorls >/dev/null 2>&1 && { alias ls='colorls'; alias lc='colorls -lA --sd' }
+
 
 typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX_SUPPORT='true'
 typeset -g ZSH_SYSTEM_CLIPBOARD_SELECTION='PRIMARY'
