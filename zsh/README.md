@@ -3,7 +3,14 @@
 - zsh
 - git
 - awk (gawk)
+- [colorls](https://github.com/athityakumar/colorls)
+- nerd-fonts-complete
 
+### Extra packages
+
+- yay: AUR package manager alternative to yaourt
+`pacman -S yay`
+- [neofetch](https://github.com/dylanaraps/neofetch)
 
 ### Notes
 
