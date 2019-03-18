@@ -54,7 +54,7 @@ zplug "zsh-users/zsh-history-substring-search", \
 
 ## Plugins Extra --------------------------------{
 zplug "plugins/virtualenvwrapper", from:oh-my-zsh
-zplug "gretzky/auto-color-ls", defer:0
+# zplug "gretzky/auto-color-ls", defer:0
 zplug "gko/ssh-connect"
 zplug "kutsan/zsh-system-clipboard"
 zplug "MichaelAquilina/zsh-you-should-use"
