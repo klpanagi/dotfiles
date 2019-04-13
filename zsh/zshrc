@@ -12,7 +12,8 @@ fi
 # Initialize zplug
 source $HOME/.zplug/init.zsh
 # Protocol to use to access the remote repository
-ZPLUG_PROTOCOL="SSH"
+# ZPLUG_PROTOCOL="SSH"
+ZPLUG_PROTOCOL="HTTPS"
 # Cache plugins
 ZPLUG_USE_CACHE=true
 
