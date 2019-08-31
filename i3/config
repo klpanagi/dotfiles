@@ -85,7 +85,7 @@ exec --no-startup-id xset b off
 bindsym $mod+x kill
 
 # start program launcher
-# bindsym $mod+d exec --no-startup-id dmenu_recency
+bindsym $mod+d exec --no-startup-id dmenu_recency
 # rofi bindings
 bindsym F9  exec rofi -show run
 bindsym F10 exec rofi -modi run -show drun -location 1 -xoffset 10 -yoffset 32 -line-padding 4 -columns 1 -width 20 -lines 10 -padding 25 -hide-scrollbar -show-icons -drun-icon-theme "Papirus"
