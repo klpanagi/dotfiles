@@ -68,6 +68,8 @@ zplug "denysdovhan/spaceship-zsh-theme", \
     use:"spaceship.zsh-theme", \
     as:theme
 
+zplug "pxgamer/quoter-zsh"
+
 SPACESHIP_PROMPT_ORDER=(
   time          # Time stampts section
   user          # Username section

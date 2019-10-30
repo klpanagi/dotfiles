@@ -5,6 +5,7 @@
 - awk (gawk)
 - [colorls](https://github.com/athityakumar/colorls)
 - nerd-fonts-complete
+- yay
 
 ### Extra packages
 
