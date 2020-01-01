@@ -37,7 +37,7 @@ zplug "plugins/ssh-agent", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
 
-zplug "chriskempson/base16-shell", defer:0
+zplug "chriskempson/base16-shell", use:"scripts/base16-gruvbox-dark-hard.sh" defer:0
 zplug "plugins/tmux", from:oh-my-zsh
 
 zplug "zsh-users/zsh-completions", defer:0
@@ -176,6 +176,12 @@ COMPLETION_WAITING_DOTS="true"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="mm/dd/yyyy"
 
+# Define colors for ls.
+# export LSCOLORS='exfxcxdxbxGxDxabagacad'
+
+# Define colors for the completion system.
+# export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
+
 # Load user's local lib and bin directories, if exist --------{
 if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
@@ -212,7 +218,7 @@ auto-ls () {
 
 # Colorls aliases
 ## https://github.com/athityakumar/colorls
-command -v colorls >/dev/null 2>&1 && { alias ls='colorls'; alias lc='colorls -lA --sd' }
+# command -v colorls >/dev/null 2>&1 && { alias ls='colorls'; alias lc='colorls -lA --sd' }
 
 
 typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX_SUPPORT='true'

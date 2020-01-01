@@ -40,3 +40,16 @@ alias findps="ps aux | grep"
 # Tmux
 #ZSH_TMUX_AUTOSTART=true
 alias tmux="tmux -2"
+
+# Enable colorized output.
+# alias ls='ls -G'
+# Lists human readable sizes, recursively.
+alias lr='ll -R'
+# Lists human readable sizes.
+alias ll='ls -lh'
+# Lists human readable sizes, hidden files.
+alias la='ll -A'
+# Lists sorted by size, largest last.
+alias lk='ll -Sr'
+# Lists sorted by date, most recent last.
+alias lt='ll -tr'
