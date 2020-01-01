@@ -76,11 +76,14 @@ zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 PURE_PROMPT_SYMBOL="[I] ➜"
 PURE_PROMPT_VICMD_SYMBOL="[N] ➜"
 PURE_GIT_PULL=1
+PURE_GIT_UNTRACKED_DIRTY=1
 
 zmodload zsh/nearcolor
 zstyle :prompt:pure:path color '$base16_green'
 zstyle :prompt:pure:git:branch color '$base16_c16'
-zstyle :prompt:pure:git:dirty color '$base16_yellow'
+zstyle :prompt:pure:git:dirty color '$base16_cyan'
+zstyle :prompt:pure:prompt:success color green
+zstyle :prompt:pure:prompt:error color '$base16_red'
 
 
 # SPACESHIP_PROMPT_ORDER=(
