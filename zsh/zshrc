@@ -22,6 +22,41 @@ ZPLUG_USE_CACHE=true
 setopt prompt_subst
 setopt correct
 
+# Color definitions -----------{
+onedark_black="#282c34"
+onedark_blue="#61afef"
+onedark_yellow="#e5c07b"
+onedark_red="#e06c75"
+onedark_white="#aab2bf"
+onedark_green="#98c379"
+onedark_visual_grey="#3e4452"
+onedark_comment_grey="#5c6370"
+
+base16_green="#a1b56c"
+base16_red="#ab4642"
+base16_yellow="#f7ca88"
+base16_blue="#7cafc2"
+base16_magenta="#ba8baf"
+base16_cyan="#86c1b9"
+base16_c16="#dc9656"
+base16_c17="#a16946"
+
+## Nord palette: https://www.nordtheme.com/docs/colors-and-palettes
+nord0="#2E3440"
+nord1="#3B4252"
+nord2="#434C5E"
+nord3="#4C566A"
+nord7="#8fbcbb"
+nord8="#88c0d0"
+nord9="#81a1c1"
+nord10="#5e81ac"
+nord11="#BF616A"
+nord12="#D08770"
+nord13="#EBCB8B"
+nord14="#A3BE8C"
+nord15="#B48EAD"
+# -----------------------------}
+
 command -v gawk >/dev/null 2>&1 || \
   {echo "[WARNING]: gawk does not exist, please install!"}
 
