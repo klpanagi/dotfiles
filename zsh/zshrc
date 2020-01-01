@@ -22,7 +22,11 @@ ZPLUG_USE_CACHE=true
 setopt prompt_subst
 setopt correct
 
-command -v gawk >/dev/null 2>&1 || {echo "[WARNING]: gawk does not exist, please install!"}
+command -v gawk >/dev/null 2>&1 || \
+  {echo "[WARNING]: gawk does not exist, please install!"}
+
+command -v fd >/dev/null 2>&1 || \
+  {echo "[WARNING]: fd (simple fast alternative to find) missing! Consider installing via:\n    pacman -Sy fd"}
 
 ## Bundles/Plugins -------------------------------{
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
@@ -30,14 +34,21 @@ zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "plugins/z", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/colorize", from:oh-my-zsh
 zplug "plugins/cp", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/ssh-agent", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
 
-zplug "chriskempson/base16-shell", use:"scripts/base16-gruvbox-dark-hard.sh" defer:0
+command -v docker >/dev/null 2>&1 && \
+  zplug "plugins/docker", from:oh-my-zsh
+
+zplug "plugins/fzf", from:oh-my-zsh
+
+zplug "chriskempson/base16-shell", \
+  use:"scripts/base16-gruvbox-dark-hard.sh", \
+  defer:0
+
 zplug "plugins/tmux", from:oh-my-zsh
 
 zplug "zsh-users/zsh-completions", defer:0
@@ -52,23 +63,16 @@ zplug "zdharma/fast-syntax-highlighting", \
   defer:3, on:"zsh-users/zsh-autosuggestions"
 
 zplug "zsh-users/zsh-history-substring-search", \
-  defer:3, on:"zsh-users/zsh-syntax-highlighting"
+  defer:3 #, on:"zsh-users/zsh-syntax-highlighting"
 # ------------------------------------------------}
 
 ## Plugins Extra --------------------------------{
-zplug "plugins/virtualenvwrapper", from:oh-my-zsh
-# zplug "gretzky/auto-color-ls", defer:0
-zplug "gko/ssh-connect"
+# zplug "gko/ssh-connect"
 zplug "kutsan/zsh-system-clipboard"
 zplug "MichaelAquilina/zsh-you-should-use"
 #------------------------------------------------}
 
 zplug "pxgamer/quoter-zsh"
-
-# Theme ------------------------------------{
-# zplug "denysdovhan/spaceship-zsh-theme", \
-#     use:"spaceship.zsh-theme", \
-#     as:theme
 
 zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
@@ -85,6 +89,11 @@ zstyle :prompt:pure:git:dirty color '$base16_cyan'
 zstyle :prompt:pure:prompt:success color green
 zstyle :prompt:pure:prompt:error color '$base16_red'
 
+
+# Theme ------------------------------------{
+# zplug "denysdovhan/spaceship-zsh-theme", \
+#     use:"spaceship.zsh-theme", \
+#     as:theme
 
 # SPACESHIP_PROMPT_ORDER=(
 #   time          # Time stampts section
@@ -142,8 +151,6 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey '^[[1;5A' history-substring-search-up
 bindkey '^[[1;5B' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
 bindkey '^K' history-substring-search-up
 bindkey '^J' history-substring-search-down
 # ---------------------------}
@@ -232,11 +239,6 @@ auto-ls () {
 # zle -N accept-line auto-ls
 # add-zsh-hook chpwd auto-ls
 
-# Colorls aliases
-## https://github.com/athityakumar/colorls
-# command -v colorls >/dev/null 2>&1 && { alias ls='colorls'; alias lc='colorls -lA --sd' }
-
-
 typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX_SUPPORT='true'
 typeset -g ZSH_SYSTEM_CLIPBOARD_SELECTION='PRIMARY'
 
@@ -261,11 +263,29 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 # -------------------------}
 
+# FZF ----------------------------{
+# Use ~~ as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER='~~'
+# Options to fzf command
+export FZF_COMPLETION_OPTS='+c -x'
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 
-# Terminal colors
-# BASE16_SHELL="$HOME/.config/base16-shell/base16-tomorrow.dark.sh"
-# BASE16_SHELL="$HOME/.config/base16-shell/base16-default-dark.sh"
-# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# Use fd (https://github.com/sharkdp/fd) instead of the default find
+# command for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+# command -v fd >/dev/null 2>&1 &&
+#   _fzf_compgen_path() {
+#     fd --hidden --follow --exclude ".git" . "$1"
+#   }
+
+# command -v fd >/dev/null 2>&1 &&
+#   # Use fd to generate the list for directory completion
+#   _fzf_compgen_dir() {
+#     fd --type d --hidden --follow --exclude ".git" . "$1"
+#   }
+# --------------------------------}
 
 # Smart "bring process to foreground" by pressing ^Z (Ctrl+Z) --{
 ctrl-z-restore () {
@@ -309,7 +329,9 @@ if [ -f "/opt/ros/kinetic/setup.zsh" ]; then
   unset ROS_IP
 fi
 
-command -v docker >/dev/null 2>&1 && [ "$(docker ps | grep netdata)" ] && echo "[*] - Netdata Real-time performance monitoring agent is runniny. Visit http://$(hostname):19999"
+command -v docker >/dev/null 2>&1 && \
+  [ "$(docker ps | grep netdata)" ] && \
+  echo "[*] - Netdata Real-time performance monitoring agent is runniny. Visit http://$(hostname):19999"
 
 # NAOQI
 load_naoqi() {
