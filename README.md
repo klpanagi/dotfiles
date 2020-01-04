@@ -1,6 +1,8 @@
 # dotfiles
 
-Because the shell feels like home! :metal:
+My terminal-based experience...
+
+![terminal_ide_image](images/terminal_ide.png)
 
 ## Some usefull cli tools to consider installing
 
