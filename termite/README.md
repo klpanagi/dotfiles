@@ -1,4 +1,7 @@
 ------------
+
+The `ttf-roboto-mono` package is required
+
 The config file must be placed at:
 
 ```bash
