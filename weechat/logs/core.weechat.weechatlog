@@ -1,0 +1,151 @@
+2020-03-19 13:13:11	⚠	spell: warning: the plugin "aspell" has been renamed to "spell" and the file /home/klpanagi/.weechat/aspell.conf still exists (but not /home/klpanagi/.weechat/spell.conf); if you upgraded from an older version, you should check instructions in release notes (version 2.5) to recover your settings
+2020-03-19 13:13:11		New key binding (context "default"): meta2-1;5P => /bar scroll buflist * -100%
+2020-03-19 13:13:11		New key binding (context "default"): meta2-1;5Q => /bar scroll buflist * +100%
+2020-03-19 13:13:11		New key binding (context "default"): meta2-1;3Q => /bar scroll buflist * e
+2020-03-19 13:13:11		New key binding (context "default"): meta2-1;3P => /bar scroll buflist * b
+2020-03-19 13:13:11		New key binding (context "default"): meta-meta2-12~ => /bar scroll buflist * e
+2020-03-19 13:13:11		New key binding (context "default"): meta-meta2-11~ => /bar scroll buflist * b
+2020-03-19 13:13:11		New key binding (context "default"): meta2-12^ => /bar scroll buflist * +100%
+2020-03-19 13:13:11		New key binding (context "default"): meta2-12~ => /bar scroll buflist * +100%
+2020-03-19 13:13:11		New key binding (context "default"): meta2-11^ => /bar scroll buflist * -100%
+2020-03-19 13:13:11		New key binding (context "default"): meta2-11~ => /bar scroll buflist * -100%
+2020-03-19 13:13:11	⚠	Warning: /home/klpanagi/.weechat/irc.conf, line 89: unknown option for section "network": channel_encode = off
+2020-03-19 13:13:11		Plugins loaded: alias, buflist, charset, exec, fset, irc, logger, perl, python, relay, script, spell, trigger
+2020-03-19 13:14:15	⚠	irc: unable to add temporary server "chat.freenode.net" because the addition of temporary servers with command /connect is currently disabled
+2020-03-19 13:14:15	⚠	irc: if you want to add a standard server, use the command "/server add" (see /help server); if you really want to add a temporary server (NOT SAVED), turn on the option irc.look.temporary_servers
+2020-03-19 13:15:03	⚠	irc: server "freenode" already exists, can't add it!
+2020-03-19 13:20:32		Mouse enabled
+2020-03-19 13:21:08		Option changed: irc.server_default.sasl_mechanism = plain
+2020-03-19 13:21:13		Option changed: irc.server_default.sasl_username = "r3m"  (default: "")
+2020-03-19 13:21:18		Option changed: irc.server_default.sasl_username = "klpanagi"  (default: "")
+2020-03-19 13:21:25		Option changed: irc.server_default.nicks = "klpanagi"  (default: "")
+2020-03-19 13:21:34		Option changed: irc.server_default.capabilities = "account-notify,away-notify,cap-notify,multi-prefix,server-time,znc.in/self-message"  (default: "")
+2020-03-19 13:21:52		Option changed: weechat.plugin.autoload = "*,!guile,!javascript,!lua,!php,!tcl,!perl,!fifo,!xfer"  (default: "*")
+2020-03-19 13:22:00		Option changed: spell.check.default_dict = "en,el,gr"  (default: "")
+2020-03-19 13:22:05		Option changed: spell.check.suggestions = 3  (default: -1)
+2020-03-19 13:22:10		Option changed: spell.color.suggestion = *green  (default: default)
+2020-03-19 13:22:13		Spell checker enabled
+2020-03-19 13:22:13	⚠	spell: error: No word lists can be found for the language "en".
+2020-03-19 13:22:13	⚠	spell: error: No word lists can be found for the language "el".
+2020-03-19 13:22:13	⚠	spell: error: No word lists can be found for the language "gr".
+2020-03-19 13:22:28		Option created: logger.level.irc = 4  (default: 9)
+2020-03-19 13:22:32		Option created: logger.mask.irc = "%Y/$server/$channel.%m-%d.log"  (default: "")
+2020-03-19 13:26:36		New key binding (context "default"): meta2-1;5P => /bar scroll buflist * -100%
+2020-03-19 13:26:36		New key binding (context "default"): meta2-1;5Q => /bar scroll buflist * +100%
+2020-03-19 13:26:36		New key binding (context "default"): meta2-1;3Q => /bar scroll buflist * e
+2020-03-19 13:26:36		New key binding (context "default"): meta2-1;3P => /bar scroll buflist * b
+2020-03-19 13:26:36		New key binding (context "default"): meta-meta2-12~ => /bar scroll buflist * e
+2020-03-19 13:26:36		New key binding (context "default"): meta-meta2-11~ => /bar scroll buflist * b
+2020-03-19 13:26:36		New key binding (context "default"): meta2-12^ => /bar scroll buflist * +100%
+2020-03-19 13:26:36		New key binding (context "default"): meta2-12~ => /bar scroll buflist * +100%
+2020-03-19 13:26:36		New key binding (context "default"): meta2-11^ => /bar scroll buflist * -100%
+2020-03-19 13:26:36		New key binding (context "default"): meta2-11~ => /bar scroll buflist * -100%
+2020-03-19 13:26:36	×	Warning: /home/klpanagi/.weechat/xfer.conf, line 33: unknown option for section "network": speed_limit = 0
+2020-03-19 13:26:36		Plugins loaded: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-03-19 13:26:36	×	spell: error: No word lists can be found for the language "en".
+2020-03-19 13:26:36	×	spell: error: No word lists can be found for the language "el".
+2020-03-19 13:26:36	×	spell: error: No word lists can be found for the language "gr".
+2020-03-19 13:26:36	×	spell: error: No word lists can be found for the language "en".
+2020-03-19 13:26:36	×	spell: error: No word lists can be found for the language "el".
+2020-03-19 13:26:36	×	spell: error: No word lists can be found for the language "gr".
+2020-03-19 13:26:53		Mouse enabled
+2020-03-19 13:27:26		Options saved to sec.conf
+2020-03-19 13:27:26		Options saved to weechat.conf
+2020-03-19 13:27:26		Options saved to plugins.conf
+2020-03-19 13:27:26		Options saved to charset.conf
+2020-03-19 13:27:26		Options saved to logger.conf
+2020-03-19 13:27:26		Options saved to exec.conf
+2020-03-19 13:27:26		Options saved to trigger.conf
+2020-03-19 13:27:26		Options saved to spell.conf
+2020-03-19 13:27:26		Options saved to alias.conf
+2020-03-19 13:27:26		Options saved to buflist.conf
+2020-03-19 13:27:26		Options saved to fifo.conf
+2020-03-19 13:27:26		Options saved to xfer.conf
+2020-03-19 13:27:26		Options saved to irc.conf
+2020-03-19 13:27:26		Options saved to relay.conf
+2020-03-19 13:27:26		Options saved to ruby.conf
+2020-03-19 13:27:26		Options saved to guile.conf
+2020-03-19 13:27:26		Options saved to perl.conf
+2020-03-19 13:27:26		Options saved to lua.conf
+2020-03-19 13:27:26		Options saved to python.conf
+2020-03-19 13:27:26		Options saved to tcl.conf
+2020-03-19 13:27:26		Options saved to script.conf
+2020-03-19 13:27:26		Options saved to fset.conf
+2020-03-19 13:28:58	×	spell: error: No word lists can be found for the language "en".
+2020-03-19 13:28:58	×	spell: error: No word lists can be found for the language "el".
+2020-03-19 13:28:58	×	spell: error: No word lists can be found for the language "gr".
+2020-03-19 13:29:37	×	Error with command "/print -buffer exec.highlights -tags notify_none,no_highlight server.freenode\t!: NickServ (NickServ@services.): You are now identified for klpanagi." (help on command: /help print)
+2020-03-19 13:29:52		[core]
+2020-03-19 13:29:52		  away     command  filter   key      plugin   reload   set      version
+2020-03-19 13:29:52		  bar      cursor   help     layout   print    repeat   unset    wait   
+2020-03-19 13:29:52		  buffer   debug    history  mouse    proxy    save     upgrade  window 
+2020-03-19 13:29:52		  color    eval     input    mute     quit     secure   uptime 
+2020-03-19 13:29:52		[ruby]
+2020-03-19 13:29:52		  ruby
+2020-03-19 13:29:52		[script]
+2020-03-19 13:29:52		  script
+2020-03-19 13:29:52		[xfer]
+2020-03-19 13:29:52		  me  xfer
+2020-03-19 13:29:52		[relay]
+2020-03-19 13:29:52		  relay
+2020-03-19 13:29:52		[alias]
+2020-03-19 13:29:52		  AAWAY    ANICK    CHAT     IG       LEAVE    N        SIGNOFF  V        WII    
+2020-03-19 13:29:52		  alias    BEEP     CL       J        M        Q        T        W        WW     
+2020-03-19 13:29:52		  AME      BYE      CLOSE    K        MSGBUF   REDRAW   UB       WC     
+2020-03-19 13:29:52		  AMSG     C        EXIT     KB       MUB      SAY      UMODE    WI     
+2020-03-19 13:29:52		[spell]
+2020-03-19 13:29:52		  spell
+2020-03-19 13:29:52		[guile]
+2020-03-19 13:29:52		  guile
+2020-03-19 13:29:52		[logger]
+2020-03-19 13:29:52		  logger
+2020-03-19 13:29:52		[exec]
+2020-03-19 13:29:52		  exec
+2020-03-19 13:29:52		[perl]
+2020-03-19 13:29:52		  perl
+2020-03-19 13:29:52		[lua]
+2020-03-19 13:29:52		  lua
+2020-03-19 13:29:52		[fset]
+2020-03-19 13:29:52		  fset
+2020-03-19 13:29:52		[python]
+2020-03-19 13:29:52		  python
+2020-03-19 13:29:52		[charset]
+2020-03-19 13:29:52		  charset
+2020-03-19 13:29:52		[tcl]
+2020-03-19 13:29:52		  tcl
+2020-03-19 13:29:52		[trigger]
+2020-03-19 13:29:52		  trigger
+2020-03-19 13:29:52		[buflist]
+2020-03-19 13:29:52		  buflist
+2020-03-19 13:29:52		[irc]
+2020-03-19 13:29:52		  admin       die         lusers      ping        saquit      userhost  
+2020-03-19 13:29:52		  allchan     disconnect  map         pong        server      users     
+2020-03-19 13:29:52		  allpv       halfop      me          query       service     version   
+2020-03-19 13:29:52		  allserv     ignore      mode        quiet       servlist    voice     
+2020-03-19 13:29:52		  ban         info        motd        quote       squery      wallchops 
+2020-03-19 13:29:52		  cap         invite      msg         reconnect   squit       wallops   
+2020-03-19 13:29:52		  connect     ison        names       rehash      stats       who       
+2020-03-19 13:29:52		  ctcp        join        nick        remove      summon      whois     
+2020-03-19 13:29:52		  cycle       kick        notice      restart     time        whowas    
+2020-03-19 13:29:52		  dcc         kickban     notify      sajoin      topic     
+2020-03-19 13:29:52		  dehalfop    kill        op          samode      trace     
+2020-03-19 13:29:52		  deop        links       oper        sanick      unban     
+2020-03-19 13:29:52		  devoice     list        part        sapart      unquiet   
+2020-03-19 13:29:52		[fifo]
+2020-03-19 13:29:52		  fifo
+2020-03-19 13:30:22	×	Error with command "/join" (help on command: /help join)
+2020-03-19 13:30:27		[irc]  /join  [-noswitch] [-server <server>] [<channel1>[,<channel2>...]] [<key1>[,<key2>...]]
+2020-03-19 13:30:27		join a channel
+2020-03-19 13:30:27		-noswitch: do not switch to new buffer
+2020-03-19 13:30:27		   server: send to this server (internal name)
+2020-03-19 13:30:27		  channel: channel name to join
+2020-03-19 13:30:27		      key: key to join the channel (channels with a key must be the first in list)
+2020-03-19 13:30:27		Examples:
+2020-03-19 13:30:27		  /join #weechat
+2020-03-19 13:30:27		  /join #protectedchan,#weechat key
+2020-03-19 13:30:27		  /join -server freenode #weechat
+2020-03-19 13:30:27		  /join -noswitch #weechat
+2020-03-19 13:33:29	×	spell: error: No word lists can be found for the language "en".
+2020-03-19 13:33:29	×	spell: error: No word lists can be found for the language "el".
+2020-03-19 13:33:29	×	spell: error: No word lists can be found for the language "gr".
+2020-03-19 14:47:49		fifo: pipe closed
