@@ -374,3 +374,4 @@ load_naoqi() {
   export LD_LIBRARY_PAT=${LD_LIBRARY_PATH}:/opt/pynaoqi-python2.7-2.1.4.13-linux64
 }
 
+source /usr/share/nvm/init-nvm.sh
