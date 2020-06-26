@@ -87,7 +87,6 @@ bindsym $mod+x kill
 # start program launcher
 bindsym $mod+d exec --no-startup-id dmenu_recency
 # rofi bindings
-bindsym F9  exec rofi -show run
 bindsym F10 exec rofi -modi run -show drun -location 1 -xoffset 10 -yoffset 32 -line-padding 4 -columns 1 -width 20 -lines 10 -padding 25 -hide-scrollbar -show-icons -drun-icon-theme "Papirus"
 bindsym F12 exec rofi -show window
 bindsym $mod+i exec ~/.i3/scripts/i3_switch_workspace.sh
@@ -353,22 +352,16 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id grive-indicator
-exec --no-startup-id dropbox
 exec --no-startup-id clipit
 # exec --no-startup-id blueman
 # exec_always --no-startup-id sbxkb
 #exec --no-startup-id start_conky_maia
 #exec --no-startup-id start_conky_green
 exec --no-startup-id start_conky_live_green
-exec --no-startup-id xautolock -time 30 -locker blurlock
-exec --no-startup-id apulse32 skype
-exec --no-startup-id thunderbird
+exec --no-startup-id xautolock -time 180 -locker blurlock
 exec --no-startup-id setxkbmap -layout "us, gr" -option "grp:alt_shift_toggle"
 exec --no-startup-id dunst
 exec --no-startup-id xedgewarp -b
-exec --no-startup-id chromium
-exec --no-startup-id pcmanfm
-exec --no-startup-id termite
 
 # Wallpaper -- Set through Nitrogen!
 #exec_always --no-startup-id feh --bg-center $HOME/.i3/wallpapers/current
