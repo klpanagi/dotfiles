@@ -71,6 +71,9 @@ command -v gawk >/dev/null 2>&1 || \
 command -v fd >/dev/null 2>&1 || \
   {echo "[WARNING]: fd (simple fast alternative to find) missing! Consider installing via:\n    pacman -Sy fd"}
 
+command -v fzf >/dev/null 2>&1 || \
+  {echo "[WARNING]: FZF is missing! Consider installing via:\n    pacman -Sy fzf"}
+
 ## Bundles/Plugins -------------------------------{
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
@@ -81,50 +84,30 @@ zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/ssh-agent", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
-
 command -v docker >/dev/null 2>&1 && \
   zplug "plugins/docker", from:oh-my-zsh
-
 zplug "plugins/fzf", from:oh-my-zsh
-
 zplug "chriskempson/base16-shell", \
   use:"scripts/base16-gruvbox-dark-hard.sh", \
   defer:0
-
 zplug "plugins/tmux", from:oh-my-zsh
-
 zplug "zsh-users/zsh-completions", defer:0
-
-# zplug "zsh-users/zsh-syntax-highlighting", \
-  # defer:3, on:"zsh-users/zsh-autosuggestions"
-
 zplug "zsh-users/zsh-autosuggestions", \
   defer:3, on:"zsh-users/zsh-completions"
-
 zplug "zdharma/fast-syntax-highlighting", \
   defer:3, on:"zsh-users/zsh-autosuggestions"
-
 zplug "zsh-users/zsh-history-substring-search", \
   defer:3 #, on:"zsh-users/zsh-syntax-highlighting"
 # ------------------------------------------------}
-
 ## Plugins Extra --------------------------------{
 # zplug "gko/ssh-connect"
 zplug "kutsan/zsh-system-clipboard"
 zplug "MichaelAquilina/zsh-you-should-use"
 #------------------------------------------------}
-
 zplug "pxgamer/quoter-zsh"
-
 zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 zplug 'wfxr/forgit'
-zplug "zdharma/zsh-diff-so-fancy", as:command, use:bin/git-dsf
-
-PURE_PROMPT_SYMBOL="[I] ➜"
-PURE_PROMPT_VICMD_SYMBOL="[N] ➜"
-PURE_GIT_PULL=1
-PURE_GIT_UNTRACKED_DIRTY=1
 
 zmodload zsh/nearcolor
 zstyle :prompt:pure:path color '$base16_green'
@@ -132,47 +115,6 @@ zstyle :prompt:pure:git:branch color '$base16_c16'
 zstyle :prompt:pure:git:dirty color '$base16_cyan'
 zstyle :prompt:pure:prompt:success color green
 zstyle :prompt:pure:prompt:error color '$base16_red'
-
-
-# Theme ------------------------------------{
-# zplug "denysdovhan/spaceship-zsh-theme", \
-#     use:"spaceship.zsh-theme", \
-#     as:theme
-
-# SPACESHIP_PROMPT_ORDER=(
-#   time          # Time stampts section
-#   user          # Username section
-#   host          # Hostname section
-#   dir           # Current directory section
-#   git           # Git section (git_branch + git_status)
-#   hg            # Mercurial section (hg_branch  + hg_status)
-#   package       # Package version
-#   node          # Node.js section
-#   ruby          # Ruby section
-#   elixir        # Elixir section
-#   xcode         # Xcode section
-#   swift         # Swift section
-#   golang        # Go section
-#   php           # PHP section
-#   rust          # Rust section
-#   haskell       # Haskell Stack section
-#   julia         # Julia section
-#   docker        # Docker section
-#   aws           # Amazon Web Services section
-#   venv          # virtualenv section
-#   conda         # conda virtualenv section
-#   pyenv         # Pyenv section
-#   # dotnet        # .NET section
-#   ember         # Ember.js section
-#   # kubecontext   # Kubectl context section
-#   exec_time     # Execution time
-#   line_sep      # Line break
-#   battery       # Battery level and status
-#   vi_mode       # Vi-mode indicator
-#   jobs          # Backgound jobs indicator
-#   exit_code     # Exit code section
-#   char          # Prompt character
-# )
 # -----------------------------------------}
 
 if ! zplug check --verbose; then
@@ -189,6 +131,15 @@ zplug load
 zmodload zsh/terminfo
 zmodload zsh/zpty
 # -----------------------}
+
+PURE_PROMPT_SYMBOL="[I] ➜"
+PURE_PROMPT_VICMD_SYMBOL="[N] ➜"
+PURE_GIT_PULL=1
+PURE_GIT_UNTRACKED_DIRTY=1
+PURE_GIT_DOWN_ARROW="⇣"
+PURE_GIT_UP_ARROW="⇡"
+PURE_GIT_STASH_SYMBOL="≡"
+zstyle :prompt:pure:git:stash show yes
 
 # zsh-history-substring-search ------------{
 bindkey '^[[A' history-substring-search-up
@@ -377,25 +328,13 @@ if [ -f "~/.zshrc_platform" ]; then
   source ~/.zshrc_platform
 fi
 
-RUN='neofetch --cpu_temp C --gtk_shorthand off --gtk2 off --gtk3 off'
-command -v neofetch >/dev/null 2>&1 && eval "$RUN"
+# RUN='neofetch --cpu_temp C --gtk_shorthand off --gtk2 off --gtk3 off'
+# command -v neofetch >/dev/null 2>&1 && eval "$RUN"
 
 export GITHUB_ACCESS_TOKEN_FILE="${HOME}/.github-access.token"
-
-if [ -f "/opt/ros/kinetic/setup.zsh" ]; then
-  source /opt/ros/kinetic/setup.zsh
-  export ROS_HOSTNAME="$(hostname).local"
-  unset ROS_IP
-fi
 
 command -v docker >/dev/null 2>&1 && \
   [ "$(docker ps | grep netdata)" ] && \
   echo "[*] - Netdata Real-time performance monitoring agent is runniny. Visit http://$(hostname):19999"
-
-# NAOQI
-load_naoqi() {
-  export PYTHONPATH=${PYTHONPATH}:/opt/pynaoqi-python2.7-2.1.4.13-linux64
-  export LD_LIBRARY_PAT=${LD_LIBRARY_PATH}:/opt/pynaoqi-python2.7-2.1.4.13-linux64
-}
 
 source /usr/share/nvm/init-nvm.sh
