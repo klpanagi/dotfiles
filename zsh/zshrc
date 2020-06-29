@@ -141,6 +141,23 @@ PURE_GIT_UP_ARROW="⇡"
 PURE_GIT_STASH_SYMBOL="≡"
 zstyle :prompt:pure:git:stash show yes
 
+forgit_log=glo
+forgit_diff=gd
+forgit_add=ga
+forgit_reset_head=grh
+# forgit_ignore=gi
+forgit_restore=gcf
+forgit_clean=gclean
+forgit_stash_show=gss
+
+FORGIT_FZF_DEFAULT_OPTS="
+--exact
+--border
+--cycle
+--reverse
+--height '80%'
+"
+
 # zsh-history-substring-search ------------{
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
