@@ -1,4 +1,12 @@
- #!/usr/bin/zsh
+#!/usr/bin/zsh
+
+## DEPENDENCIES
+# - fd
+# - gawk
+# - fzf
+# - diff-so-fancy
+# - bat
+
 
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 export PATH=$PATH:${HOME}/.local/bin
@@ -67,8 +75,7 @@ command -v fd >/dev/null 2>&1 || \
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
 zplug "plugins/command-not-found", from:oh-my-zsh
-zplug "plugins/z", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh
+# zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/cp", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/ssh-agent", from:oh-my-zsh
@@ -111,6 +118,8 @@ zplug "pxgamer/quoter-zsh"
 
 zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug 'wfxr/forgit'
+zplug "zdharma/zsh-diff-so-fancy", as:command, use:bin/git-dsf
 
 PURE_PROMPT_SYMBOL="[I] ➜"
 PURE_PROMPT_VICMD_SYMBOL="[N] ➜"
