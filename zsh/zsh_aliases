@@ -53,3 +53,9 @@ alias la='ll -A'
 alias lk='ll -Sr'
 # Lists sorted by date, most recent last.
 alias lt='ll -tr'
+
+# GIT ---------------------------->
+alias gst='git status -s'
+alias gp='git push'
+alias gc='git commit -v'
+# <--------------------------------
