@@ -58,4 +58,5 @@ alias lt='ll -tr'
 alias gst='git status -s'
 alias gp='git push'
 alias gc='git commit -v'
+alias gf='git fetch'
 # <--------------------------------
