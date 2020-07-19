@@ -60,6 +60,6 @@ ydl () {
     fi
 }
 
-load_ros () {
-  source /opt/ros/melodic/setup.zsh
+sreplace () {
+  find ./ -type f -exec sed -i "s/${1}/${2}/g" {} \;
 }
