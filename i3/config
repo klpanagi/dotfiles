@@ -87,8 +87,10 @@ bindsym $mod+x kill
 # start program launcher
 bindsym $mod+d exec --no-startup-id dmenu_recency
 # rofi bindings
-bindsym F10 exec rofi -modi run -show drun -location 1 -xoffset 10 -yoffset 32 -line-padding 4 -columns 1 -width 20 -lines 10 -padding 25 -hide-scrollbar -show-icons -drun-icon-theme "Papirus"
+bindsym F10 exec rofi -modi drun -show drun -location 1 -xoffset 10 -yoffset 32 -line-padding 4 -columns 1 -width 20 -lines 10 -padding 25 -hide-scrollbar -show-icons -drun-icon-theme "Papirus"
 bindsym F12 exec rofi -show window
+bindsym F9 exec ~/.config/rofi/launchers-git/launcher.sh blurry
+bindsym F8 exec ~/.config/rofi/launchers-git/launcher.sh
 bindsym $mod+i exec ~/.i3/scripts/i3_switch_workspace.sh
 
 # launch categorized menu
