@@ -77,7 +77,7 @@ bindsym F8 exec ~/.config/rofi/launchers-git/launcher.sh
 bindsym $mod+i exec ~/.i3/scripts/i3_switch_workspace.sh
 
 
-# focus_follows_mouse no
+focus_follows_mouse no
 
 # change focus
 bindsym $mod+j focus left
