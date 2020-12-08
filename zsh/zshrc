@@ -88,7 +88,7 @@ command -v docker >/dev/null 2>&1 && \
   zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/fzf", from:oh-my-zsh
 zplug "chriskempson/base16-shell", \
-  use:"scripts/base16-gruvbox-dark-hard.sh", \
+  use:"scripts/base16-synth-midnight-dark.sh", \
   defer:0
 zplug "plugins/tmux", from:oh-my-zsh
 zplug "zsh-users/zsh-completions", defer:0
