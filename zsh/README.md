@@ -4,14 +4,15 @@
 - git
 - awk (gawk)
 - [colorls](https://github.com/athityakumar/colorls)
-- nerd-fonts-complete
-- yay
+- [nerd-fonts-complete]
+- [bat](https://github.com/sharkdp/bat)
+- [fzf](https://github.com/junegunn/fzf)
+- [ripgrep](https://github.com/BurntSushi/ripgrep)
 
 ### Extra packages
 
 - yay: AUR package manager alternative to yaourt
 `pacman -S yay`
-- [neofetch](https://github.com/dylanaraps/neofetch)
 
 ### Notes
 
