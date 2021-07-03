@@ -80,10 +80,10 @@ bindsym $mod+i exec ~/.i3/scripts/i3_switch_workspace.sh
 focus_follows_mouse no
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+# bindsym $mod+j focus left
+# bindsym $mod+k focus down
+# bindsym $mod+l focus up
+# bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -288,7 +288,7 @@ bindsym $mod+Shift+w mode "Move workspace"
 # --}
 
 # Lock screen
-bindsym $mod+l exec --no-startup-id blurlock
+# bindsym $mod+l exec --no-startup-id blurlock
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
