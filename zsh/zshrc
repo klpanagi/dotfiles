@@ -78,15 +78,12 @@ command -v fzf >/dev/null 2>&1 || \
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
 zplug "plugins/command-not-found", from:oh-my-zsh
-# zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/cp", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/ssh-agent", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
 command -v docker >/dev/null 2>&1 && \
   zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/fzf", from:oh-my-zsh
 zplug "chriskempson/base16-shell", \
   use:"scripts/base16-synth-midnight-dark.sh", \
   defer:0
@@ -97,25 +94,14 @@ zplug "zsh-users/zsh-autosuggestions", \
 zplug "zdharma/fast-syntax-highlighting", \
   defer:3, on:"zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search", \
-  defer:3 #, on:"zsh-users/zsh-syntax-highlighting"
-# ------------------------------------------------}
-## Plugins Extra --------------------------------{
-# zplug "gko/ssh-connect"
+  defer:3
 zplug "kutsan/zsh-system-clipboard"
 zplug "MichaelAquilina/zsh-you-should-use"
-#------------------------------------------------}
 zplug "pxgamer/quoter-zsh"
-zplug "mafredri/zsh-async", from:github
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-zplug 'wfxr/forgit'
-
-zmodload zsh/nearcolor
-zstyle :prompt:pure:path color '$base16_green'
-zstyle :prompt:pure:git:branch color '$base16_c16'
-zstyle :prompt:pure:git:dirty color '$base16_cyan'
-zstyle :prompt:pure:prompt:success color green
-zstyle :prompt:pure:prompt:error color '$base16_red'
-# -----------------------------------------}
+zplug "wfxr/forgit"
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+# ------------------------------------------------}
 
 if ! zplug check --verbose; then
     printf "Install zsh plugin? [y/N]: "
@@ -130,17 +116,27 @@ zplug load
 # Load ZSH Modules ----------------{
 zmodload zsh/terminfo
 zmodload zsh/zpty
+zmodload zsh/nearcolor
 # -----------------------}
 
+# Pure ZSH Prompt ------------------------------------->
+# autoload -U promptinit; promptinit
+# zstyle :prompt:pure:path color '$base16_green'
+zstyle :prompt:pure:git:branch color '$base16_c16'
+zstyle :prompt:pure:git:dirty color '$base16_cyan'
+# zstyle :prompt:pure:prompt:success color '$base16_green'
+# zstyle :prompt:pure:prompt:error color '$base16_red'
 PURE_PROMPT_SYMBOL="[I] ➜"
 PURE_PROMPT_VICMD_SYMBOL="[N] ➜"
-PURE_GIT_PULL=1
 PURE_GIT_UNTRACKED_DIRTY=1
 PURE_GIT_DOWN_ARROW="⇣"
 PURE_GIT_UP_ARROW="⇡"
 PURE_GIT_STASH_SYMBOL="≡"
 zstyle :prompt:pure:git:stash show yes
+# prompt pure
+# <----------------------------------------------------
 
+# Forgeit Plugin ------------------------------------->
 forgit_log=glo
 forgit_diff=gd
 forgit_add=ga
@@ -157,6 +153,7 @@ FORGIT_FZF_DEFAULT_OPTS="
 --reverse
 --height '80%'
 "
+# <----------------------------------------------------
 
 # zsh-history-substring-search ------------{
 bindkey '^[[A' history-substring-search-up
@@ -173,7 +170,7 @@ bindkey '^o' autosuggest-execute
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=38"
 ## --}
 
-# ZSH History config ----------{
+# ZSH History config ------------------------------->
 setopt append_history
 setopt hist_expire_dups_first
 setopt hist_fcntl_lock
@@ -182,10 +179,10 @@ setopt hist_lex_words
 setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt share_history
-# ----------}
+# <--------------------------------------------------
 
-export BROWSER="chromium"
-export TERMINAL="termite"
+export BROWSER="brave"
+export TERMINAL="kitty"
 
 ## Compiler
 export CC=/usr/bin/gcc
@@ -227,16 +224,17 @@ if [ -d "$HOME/.local/lib" ]; then
 fi
 # ----------------------------------------------------}
 
-# Select terminal editor between vim and neovim
+# Select terminal editor between vim and neovim ---------------->
 command -v nvim >/dev/null 2>&1 &&
   { export EDITOR="nvim"; alias vim="nvim" } || export EDITOR="vim"
+# <------------------------------------------------------------
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 export SSH_KEY_PATH="~/.ssh/id_rsa.pub"
 
-# Auto execute ls command when cding to a directory
+# Auto execute ls command when cding to a directory ----------->
 auto-ls () {
   if [[ $#BUFFER -eq 0 ]]; then
     zle && echo ""
@@ -246,10 +244,10 @@ auto-ls () {
     zle .$WIDGET
   fi
 }
-
 # zle -N auto-ls
 # zle -N accept-line auto-ls
 # add-zsh-hook chpwd auto-ls
+# <------------------------------------------------------------
 
 typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX_SUPPORT='true'
 typeset -g ZSH_SYSTEM_CLIPBOARD_SELECTION='PRIMARY'
@@ -275,7 +273,7 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 # -------------------------}
 
-# FZF ----------------------------{
+# FZF -------------------------------------------------------->
 # Use ~~ as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER='~~'
 # Options to fzf command
@@ -312,7 +310,7 @@ _fzf_comprun() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# --------------------------------}
+# -------------------------------------------------------------
 
 # Smart "bring process to foreground" by pressing ^Z (Ctrl+Z) --{
 ctrl-z-restore () {
@@ -337,7 +335,7 @@ export WORKON_HOME=~/.virtualenvs
   source /usr/local/bin/virtualenvwrapper.sh
 
 if [ -n "$VIRTUAL_ENV" ]; then
-  . "$VIRTUAL_ENV/bin/activate"
+# . "$VIRTUAL_ENV/bin/activate"  # commented out by conda initialize
 fi
 # ------------------------------------}
 
@@ -345,13 +343,22 @@ if [ -f "~/.zshrc_platform" ]; then
   source ~/.zshrc_platform
 fi
 
-# RUN='neofetch --cpu_temp C --gtk_shorthand off --gtk2 off --gtk3 off'
-# command -v neofetch >/dev/null 2>&1 && eval "$RUN"
-
 export GITHUB_ACCESS_TOKEN_FILE="${HOME}/.github-access.token"
 
-command -v docker >/dev/null 2>&1 && \
-  [ "$(docker ps | grep netdata)" ] && \
-  echo "[*] - Netdata Real-time performance monitoring agent is runniny. Visit http://$(hostname):19999"
+#source /usr/share/nvm/init-nvm.sh
 
-source /usr/share/nvm/init-nvm.sh
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/opt/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/opt/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# <<< conda initialize <<<
+
