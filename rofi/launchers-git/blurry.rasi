@@ -47,10 +47,10 @@ window {
 
 prompt {
     enabled: 						true;
-	padding: 						0px 8px 0px 4px;
+	padding: 				        0px 8px 0px 4px;
 	background-color: 				@background;
 	text-color: 					@foreground;
-	font:							"FantasqueSansMono Nerd Font 16";
+	font:					        "FantasqueSansMono Nerd Font 16";
 }
 
 inputbar {
@@ -111,6 +111,7 @@ element-icon {
 }
 
 element-text {
+    text-color:                     @foreground;
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
