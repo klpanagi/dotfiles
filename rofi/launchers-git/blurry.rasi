@@ -33,7 +33,7 @@ configuration {
 }
 
 window {
-    transparency:                   "real";
+    transparency:                   "background";
     background-color:               @background;
     text-color:                     @foreground;
     border-radius:                  0px;

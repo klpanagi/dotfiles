@@ -1,13 +1,12 @@
 #!/bin/bash
 
-CONFIG_SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/config"
+SRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DEST_DIR="${HOME}/.config/rofi"
-CONFIG_DEST="${DEST_DIR}/config"
 
-if [ ! -d "$DEST_DIR" ]; then
-  echo "[x] - Creating directory $DEST_DIR"
-  mkdir -p ${DEST_DIR}
+if [ -d "$DEST_DIR" ]; then
+    echo "Directory <${DEST_DIR}> exists."
+    exit 0
 fi
 
-ln -sT $CONFIG_SRC $CONFIG_DEST
-echo "Created symlink: $CONFIG_SRC -> $CONFIG_DEST"
+ln -sT $SRC_DIR $DEST_DIR
+echo "Created symlink: $SRC_DIR -> $DEST_DIR"
